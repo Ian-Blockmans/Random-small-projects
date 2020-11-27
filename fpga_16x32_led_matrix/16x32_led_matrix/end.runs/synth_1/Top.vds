@@ -1,0 +1,377 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri May 24 16:02:39 2019
+# Process ID: 16416
+# Current directory: D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.runs/synth_1
+# Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
+# Log file: D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.runs/synth_1/Top.vds
+# Journal file: D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Top.tcl -notrace
+Command: synth_design -top Top -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 18328 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 363.715 ; gain = 101.375
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Top' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:43]
+INFO: [Synth 8-3491] module 'clock1hz' declared at 'D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/clk.vhd:34' bound to instance 'EN1HZ' of component 'clock1hz' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:90]
+INFO: [Synth 8-638] synthesizing module 'clock1hz' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/clk.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'clock1hz' (1#1) [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/clk.vhd:41]
+INFO: [Synth 8-3491] module 'clken2' declared at 'D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/clken2.vhd:34' bound to instance 'EN2HZ' of component 'clken2' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:91]
+INFO: [Synth 8-638] synthesizing module 'clken2' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/clken2.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'clken2' (2#1) [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/clken2.vhd:41]
+INFO: [Synth 8-3491] module 'onehot' declared at 'D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/onehot.vhd:34' bound to instance 'ONE' of component 'onehot' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:92]
+INFO: [Synth 8-638] synthesizing module 'onehot' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/onehot.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'onehot' (3#1) [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/onehot.vhd:41]
+INFO: [Synth 8-3491] module 'mux' declared at 'D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/MUX.vhd:34' bound to instance 'MUXC' of component 'mux' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:93]
+INFO: [Synth 8-638] synthesizing module 'mux' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/MUX.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'mux' (4#1) [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/MUX.vhd:46]
+INFO: [Synth 8-3491] module 'bcd' declared at 'D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/bcd.vhd:36' bound to instance 'BCDC1' of component 'bcd' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:94]
+INFO: [Synth 8-638] synthesizing module 'bcd' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/bcd.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'bcd' (5#1) [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/bcd.vhd:45]
+INFO: [Synth 8-3491] module 'bcd' declared at 'D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/bcd.vhd:36' bound to instance 'BCDC2' of component 'bcd' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:95]
+INFO: [Synth 8-3491] module 'bcd' declared at 'D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/bcd.vhd:36' bound to instance 'BCDC3' of component 'bcd' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:96]
+INFO: [Synth 8-3491] module 'bcd' declared at 'D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/bcd.vhd:36' bound to instance 'BCDC4' of component 'bcd' [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:97]
+INFO: [Synth 8-256] done synthesizing module 'Top' (6#1) [D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.srcs/sources_1/new/end_top.vhd:43]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 419.914 ; gain = 157.574
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 419.914 ; gain = 157.574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 419.914 ; gain = 157.574
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/one thomasmore/OneDrive - Thomas More/vhdl/Basys-3-Master.xdc]
+WARNING: [Vivado 12-584] No ports matched 'dp'. [D:/one thomasmore/OneDrive - Thomas More/vhdl/Basys-3-Master.xdc:97]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/one thomasmore/OneDrive - Thomas More/vhdl/Basys-3-Master.xdc:97]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'dp'. [D:/one thomasmore/OneDrive - Thomas More/vhdl/Basys-3-Master.xdc:98]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [D:/one thomasmore/OneDrive - Thomas More/vhdl/Basys-3-Master.xdc:98]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [D:/one thomasmore/OneDrive - Thomas More/vhdl/Basys-3-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/one thomasmore/OneDrive - Thomas More/vhdl/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 738.480 ; gain = 0.000
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 738.480 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 738.480 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 738.480 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 738.480 ; gain = 476.141
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 738.480 ; gain = 476.141
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 738.480 ; gain = 476.141
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5545] ROM "CLKOUT" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "a" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "CLKOUT" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "a" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "uit" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "ans" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "sele" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 738.480 ; gain = 476.141
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input      4 Bit       Adders := 4     
++---Registers : 
+	               32 Bit    Registers := 3     
+	                7 Bit    Registers := 5     
+	                4 Bit    Registers := 5     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	   5 Input      7 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module clock1hz 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module clken2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module onehot 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+Module mux 
+Detailed RTL Component Info : 
++---Registers : 
+	                7 Bit    Registers := 1     
++---Muxes : 
+	   5 Input      7 Bit        Muxes := 1     
+Module bcd 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5545] ROM "EN1HZ/a" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "EN1HZ/CLKOUT" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "EN2HZ/a" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "EN2HZ/CLKOUT" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "ONE/uit" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 738.480 ; gain = 476.141
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 739.895 ; gain = 477.555
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 761.992 ; gain = 499.652
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 762.758 ; gain = 500.418
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 762.758 ; gain = 500.418
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 762.758 ; gain = 500.418
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 762.758 ; gain = 500.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 762.758 ; gain = 500.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 762.758 ; gain = 500.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 762.758 ; gain = 500.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     3|
+|2     |CARRY4 |    24|
+|3     |LUT1   |     5|
+|4     |LUT2   |     4|
+|5     |LUT3   |     4|
+|6     |LUT4   |    53|
+|7     |LUT5   |     9|
+|8     |LUT6   |    15|
+|9     |FDRE   |   156|
+|10    |IBUF   |     1|
+|11    |OBUF   |    11|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------+---------+------+
+|      |Instance |Module   |Cells |
++------+---------+---------+------+
+|1     |top      |         |   285|
+|2     |  BCDC1  |bcd      |    24|
+|3     |  BCDC2  |bcd_0    |    24|
+|4     |  BCDC3  |bcd_1    |    24|
+|5     |  BCDC4  |bcd_2    |    23|
+|6     |  EN1HZ  |clock1hz |    50|
+|7     |  EN2HZ  |clken2   |    50|
+|8     |  MUXC   |mux      |    14|
+|9     |  ONE    |onehot   |    61|
++------+---------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 762.758 ; gain = 500.418
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:23 ; elapsed = 00:00:29 . Memory (MB): peak = 762.758 ; gain = 181.852
+Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 762.758 ; gain = 500.418
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 24 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 762.758 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+44 Infos, 2 Warnings, 2 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 762.758 ; gain = 513.035
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 762.758 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/one thomasmore/OneDrive - Thomas More/vhdl/end/end.runs/synth_1/Top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri May 24 16:03:24 2019...
