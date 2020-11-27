@@ -1,0 +1,47 @@
+Removed Member From Class: ClassName=LED Member=R1
+Removed Member From Class: ClassName=SW Member=R1
+Removed Member From Class: ClassName=top Member=R7
+Removed Member From Class: ClassName=top Member=R9
+Removed Member From Class: ClassName=top Member=R14
+Removed Member From Class: ClassName=top Member=R19
+Removed Member From Class: ClassName=LED Member=R20
+Removed Member From Class: ClassName=top Member=U5
+Added Member To Class: ClassName=top Member=Component C1 1u
+Added Member To Class: ClassName=top Member=Component C2 100n
+Added Member To Class: ClassName=top Member=Component C3 18p
+Added Member To Class: ClassName=top Member=Component C5 18p
+Added Member To Class: ClassName=SW Member=Component D1 diode 1N4148
+Added Member To Class: ClassName=SW Member=Component D3 diode 1N4148
+Added Member To Class: ClassName=SW Member=Component D7 diode 1N4148
+Added Member To Class: ClassName=SW Member=Component D8 diode 1N4148
+Added Member To Class: ClassName=SW Member=Component D12 diode 1N4148
+Added Member To Class: ClassName=SW Member=Component D14 diode 1N4148
+Added Member To Class: ClassName=top Member=Component R2 22
+Added Member To Class: ClassName=top Member=Component R3 22
+Added Member To Class: ClassName=top Member=Component R4 5.1k
+Added Member To Class: ClassName=top Member=Component R5 5.1k
+Added Member To Class: ClassName=LED Member=Component R6 150
+Added Member To Class: ClassName=LED Member=Component R8 100
+Added Member To Class: ClassName=LED Member=Component R9 150
+Added Member To Class: ClassName=LED Member=Component R10 100
+Added Member To Class: ClassName=LED Member=Component R11 100
+Added Member To Class: ClassName=LED Member=Component R12 150
+Added Member To Class: ClassName=LED Member=Component R13 100
+Added Member To Class: ClassName=LED Member=Component R14 100
+Added Member To Class: ClassName=LED Member=Component R15 150
+Added Member To Class: ClassName=LED Member=Component R16 100
+Added Member To Class: ClassName=LED Member=Component R17 100
+Added Member To Class: ClassName=SW Member=Component R18 10k
+Added Member To Class: ClassName=SW Member=Component R19 10k
+Added Member To Class: ClassName=SW Member=Component R21 10k
+Added Member To Class: ClassName=SW Member=Component S2 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S3 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S4 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S5 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S9 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S10 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S11 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S13 cherry_mx+rgb
+Added Member To Class: ClassName=top Member=Component U1 ATmega32U4
+Added Member To Class: ClassName=LED Member=Component U2 P-mosfet_NX300PBK
+Added Member To Class: ClassName=LED Member=Component U3 P-mosfet_NX300PBK

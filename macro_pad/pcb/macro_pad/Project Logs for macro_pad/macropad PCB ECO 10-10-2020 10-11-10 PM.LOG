@@ -1,0 +1,176 @@
+Added Component: Designator=S1(kailh_socket_mx+led)
+Added Component: Designator=S2(kailh_socket_mx+led)
+Added Component: Designator=S3(kailh_socket_mx+led)
+Added Component: Designator=S4(kailh_socket_mx+led)
+Added Component: Designator=S5(kailh_socket_mx+led)
+Added Component: Designator=S6(kailh_socket_mx+led)
+Added Component: Designator=S7(kailh_socket_mx+led)
+Added Component: Designator=S8(kailh_socket_mx+led)
+Added Component: Designator=S9(kailh_socket_mx+led)
+Added Component: Designator=S10(kailh_socket_mx+led)
+Added Component: Designator=S11(kailh_socket_mx+led)
+Added Component: Designator=S12(kailh_socket_mx+led)
+Added Component: Designator=S13(kailh_socket_mx+led)
+Added Component: Designator=S14(kailh_socket_mx+led)
+Added Component: Designator=S15(kailh_socket_mx+led)
+Added Component: Designator=S16(kailh_socket_mx+led)
+Added Pin To Net: NetName=NetR19_1 Pin=S1-1
+Added Pin To Net: NetName=NetR19_1 Pin=S1-1
+Added Pin To Net: NetName=NetD1_1 Pin=S1-2
+Added Pin To Net: NetName=NetD1_1 Pin=S1-2
+Added Pin To Net: NetName=NetD1_1 Pin=S1-2
+Added Pin To Net: NetName=NetS1_+ Pin=S1-+
+Added Pin To Net: NetName=NetR6_2 Pin=S1-B
+Added Pin To Net: NetName=NetR5_2 Pin=S1-G
+Added Pin To Net: NetName=NetR4_2 Pin=S1-R
+Added Pin To Net: NetName=NetR18_1 Pin=S2-1
+Added Pin To Net: NetName=NetR18_1 Pin=S2-1
+Added Pin To Net: NetName=NetD2_1 Pin=S2-2
+Added Pin To Net: NetName=NetD2_1 Pin=S2-2
+Added Pin To Net: NetName=NetD2_1 Pin=S2-2
+Added Pin To Net: NetName=NetS1_+ Pin=S2-+
+Added Pin To Net: NetName=NetR9_2 Pin=S2-B
+Added Pin To Net: NetName=NetR8_2 Pin=S2-G
+Added Pin To Net: NetName=NetR7_2 Pin=S2-R
+Added Pin To Net: NetName=NetR17_1 Pin=S3-1
+Added Pin To Net: NetName=NetR17_1 Pin=S3-1
+Added Pin To Net: NetName=NetD3_1 Pin=S3-2
+Added Pin To Net: NetName=NetD3_1 Pin=S3-2
+Added Pin To Net: NetName=NetD3_1 Pin=S3-2
+Added Pin To Net: NetName=NetS1_+ Pin=S3-+
+Added Pin To Net: NetName=NetR12_2 Pin=S3-B
+Added Pin To Net: NetName=NetR11_2 Pin=S3-G
+Added Pin To Net: NetName=NetR10_2 Pin=S3-R
+Added Pin To Net: NetName=NetR16_1 Pin=S4-1
+Added Pin To Net: NetName=NetR16_1 Pin=S4-1
+Added Pin To Net: NetName=NetD4_1 Pin=S4-2
+Added Pin To Net: NetName=NetD4_1 Pin=S4-2
+Added Pin To Net: NetName=NetD4_1 Pin=S4-2
+Added Pin To Net: NetName=NetS1_+ Pin=S4-+
+Added Pin To Net: NetName=NetR15_2 Pin=S4-B
+Added Pin To Net: NetName=NetR14_2 Pin=S4-G
+Added Pin To Net: NetName=NetR13_2 Pin=S4-R
+Added Pin To Net: NetName=NetR19_1 Pin=S5-1
+Added Pin To Net: NetName=NetR19_1 Pin=S5-1
+Added Pin To Net: NetName=NetD5_1 Pin=S5-2
+Added Pin To Net: NetName=NetD5_1 Pin=S5-2
+Added Pin To Net: NetName=NetD5_1 Pin=S5-2
+Added Pin To Net: NetName=NetS5_+ Pin=S5-+
+Added Pin To Net: NetName=NetR6_2 Pin=S5-B
+Added Pin To Net: NetName=NetR5_2 Pin=S5-G
+Added Pin To Net: NetName=NetR4_2 Pin=S5-R
+Added Pin To Net: NetName=NetR18_1 Pin=S6-1
+Added Pin To Net: NetName=NetR18_1 Pin=S6-1
+Added Pin To Net: NetName=NetD6_1 Pin=S6-2
+Added Pin To Net: NetName=NetD6_1 Pin=S6-2
+Added Pin To Net: NetName=NetD6_1 Pin=S6-2
+Added Pin To Net: NetName=NetS5_+ Pin=S6-+
+Added Pin To Net: NetName=NetR9_2 Pin=S6-B
+Added Pin To Net: NetName=NetR8_2 Pin=S6-G
+Added Pin To Net: NetName=NetR7_2 Pin=S6-R
+Added Pin To Net: NetName=NetR17_1 Pin=S7-1
+Added Pin To Net: NetName=NetR17_1 Pin=S7-1
+Added Pin To Net: NetName=NetD7_1 Pin=S7-2
+Added Pin To Net: NetName=NetD7_1 Pin=S7-2
+Added Pin To Net: NetName=NetD7_1 Pin=S7-2
+Added Pin To Net: NetName=NetS5_+ Pin=S7-+
+Added Pin To Net: NetName=NetR12_2 Pin=S7-B
+Added Pin To Net: NetName=NetR11_2 Pin=S7-G
+Added Pin To Net: NetName=NetR10_2 Pin=S7-R
+Added Pin To Net: NetName=NetR16_1 Pin=S8-1
+Added Pin To Net: NetName=NetR16_1 Pin=S8-1
+Added Pin To Net: NetName=NetD8_1 Pin=S8-2
+Added Pin To Net: NetName=NetD8_1 Pin=S8-2
+Added Pin To Net: NetName=NetD8_1 Pin=S8-2
+Added Pin To Net: NetName=NetS5_+ Pin=S8-+
+Added Pin To Net: NetName=NetR15_2 Pin=S8-B
+Added Pin To Net: NetName=NetR14_2 Pin=S8-G
+Added Pin To Net: NetName=NetR13_2 Pin=S8-R
+Added Pin To Net: NetName=NetR19_1 Pin=S9-1
+Added Pin To Net: NetName=NetR19_1 Pin=S9-1
+Added Pin To Net: NetName=NetD9_1 Pin=S9-2
+Added Pin To Net: NetName=NetD9_1 Pin=S9-2
+Added Pin To Net: NetName=NetD9_1 Pin=S9-2
+Added Pin To Net: NetName=NetS9_+ Pin=S9-+
+Added Pin To Net: NetName=NetR6_2 Pin=S9-B
+Added Pin To Net: NetName=NetR5_2 Pin=S9-G
+Added Pin To Net: NetName=NetR4_2 Pin=S9-R
+Added Pin To Net: NetName=NetR18_1 Pin=S10-1
+Added Pin To Net: NetName=NetR18_1 Pin=S10-1
+Added Pin To Net: NetName=NetD10_1 Pin=S10-2
+Added Pin To Net: NetName=NetD10_1 Pin=S10-2
+Added Pin To Net: NetName=NetD10_1 Pin=S10-2
+Added Pin To Net: NetName=NetS9_+ Pin=S10-+
+Added Pin To Net: NetName=NetR9_2 Pin=S10-B
+Added Pin To Net: NetName=NetR8_2 Pin=S10-G
+Added Pin To Net: NetName=NetR7_2 Pin=S10-R
+Added Pin To Net: NetName=NetR17_1 Pin=S11-1
+Added Pin To Net: NetName=NetR17_1 Pin=S11-1
+Added Pin To Net: NetName=NetD11_1 Pin=S11-2
+Added Pin To Net: NetName=NetD11_1 Pin=S11-2
+Added Pin To Net: NetName=NetD11_1 Pin=S11-2
+Added Pin To Net: NetName=NetS9_+ Pin=S11-+
+Added Pin To Net: NetName=NetR12_2 Pin=S11-B
+Added Pin To Net: NetName=NetR11_2 Pin=S11-G
+Added Pin To Net: NetName=NetR10_2 Pin=S11-R
+Added Pin To Net: NetName=NetR16_1 Pin=S12-1
+Added Pin To Net: NetName=NetR16_1 Pin=S12-1
+Added Pin To Net: NetName=NetD12_1 Pin=S12-2
+Added Pin To Net: NetName=NetD12_1 Pin=S12-2
+Added Pin To Net: NetName=NetD12_1 Pin=S12-2
+Added Pin To Net: NetName=NetS9_+ Pin=S12-+
+Added Pin To Net: NetName=NetR15_2 Pin=S12-B
+Added Pin To Net: NetName=NetR14_2 Pin=S12-G
+Added Pin To Net: NetName=NetR13_2 Pin=S12-R
+Added Pin To Net: NetName=NetR19_1 Pin=S13-1
+Added Pin To Net: NetName=NetR19_1 Pin=S13-1
+Added Pin To Net: NetName=NetD13_1 Pin=S13-2
+Added Pin To Net: NetName=NetD13_1 Pin=S13-2
+Added Pin To Net: NetName=NetD13_1 Pin=S13-2
+Added Pin To Net: NetName=NetS13_+ Pin=S13-+
+Added Pin To Net: NetName=NetR6_2 Pin=S13-B
+Added Pin To Net: NetName=NetR5_2 Pin=S13-G
+Added Pin To Net: NetName=NetR4_2 Pin=S13-R
+Added Pin To Net: NetName=NetR18_1 Pin=S14-1
+Added Pin To Net: NetName=NetR18_1 Pin=S14-1
+Added Pin To Net: NetName=NetD14_1 Pin=S14-2
+Added Pin To Net: NetName=NetD14_1 Pin=S14-2
+Added Pin To Net: NetName=NetD14_1 Pin=S14-2
+Added Pin To Net: NetName=NetS13_+ Pin=S14-+
+Added Pin To Net: NetName=NetR9_2 Pin=S14-B
+Added Pin To Net: NetName=NetR8_2 Pin=S14-G
+Added Pin To Net: NetName=NetR7_2 Pin=S14-R
+Added Pin To Net: NetName=NetR17_1 Pin=S15-1
+Added Pin To Net: NetName=NetR17_1 Pin=S15-1
+Added Pin To Net: NetName=NetD15_1 Pin=S15-2
+Added Pin To Net: NetName=NetD15_1 Pin=S15-2
+Added Pin To Net: NetName=NetD15_1 Pin=S15-2
+Added Pin To Net: NetName=NetS13_+ Pin=S15-+
+Added Pin To Net: NetName=NetR12_2 Pin=S15-B
+Added Pin To Net: NetName=NetR11_2 Pin=S15-G
+Added Pin To Net: NetName=NetR10_2 Pin=S15-R
+Added Pin To Net: NetName=NetR16_1 Pin=S16-1
+Added Pin To Net: NetName=NetR16_1 Pin=S16-1
+Added Pin To Net: NetName=NetD16_1 Pin=S16-2
+Added Pin To Net: NetName=NetD16_1 Pin=S16-2
+Added Pin To Net: NetName=NetD16_1 Pin=S16-2
+Added Pin To Net: NetName=NetS13_+ Pin=S16-+
+Added Pin To Net: NetName=NetR15_2 Pin=S16-B
+Added Pin To Net: NetName=NetR14_2 Pin=S16-G
+Added Pin To Net: NetName=NetR13_2 Pin=S16-R
+Added Member To Class: ClassName=SW Member=Component S1 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S2 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S3 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S4 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S5 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S6 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S7 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S8 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S9 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S10 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S11 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S12 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S13 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S14 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S15 cherry_mx+rgb
+Added Member To Class: ClassName=SW Member=Component S16 cherry_mx+rgb

@@ -1,0 +1,6 @@
+Added Component: Designator=Y1(SMD_crystal_P220x160S320x250)
+Added Pin To Net: NetName=NetC7_1 Pin=Y1-1
+Added Pin To Net: NetName=GND Pin=Y1-2
+Added Pin To Net: NetName=NetC5_1 Pin=Y1-3
+Added Pin To Net: NetName=GND Pin=Y1-4
+Added Member To Class: ClassName=temp Member=Component Y1 16MHz

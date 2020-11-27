@@ -1,0 +1,4 @@
+Change Physical Footprint: Designator=S6 Old Footprint=kailh_socket_mx+led New Footprint=kailh_socket_mx+led
+Change Physical Footprint: Designator=S7 Old Footprint=kailh_socket_mx+led New Footprint=kailh_socket_mx+led
+Change Physical Footprint: Designator=S9 Old Footprint=kailh_socket_mx+led New Footprint=kailh_socket_mx+led
+Change Physical Footprint: Designator=U1 Old Footprint=QFN44P05P7X7 New Footprint=QFN44P05P7X7

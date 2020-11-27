@@ -1,0 +1,15 @@
+Added Component: Designator=R20(0805)
+Added Component: Designator=R21(0805)
+Added Pin To Net: NetName=GND Pin=R20-2
+Added Pin To Net: NetName=GND Pin=R21-2
+Added Pin To Net: NetName=NetC4_A5 Pin=C4-A5
+Added Pin To Net: NetName=NetC4_A5 Pin=R20-1
+Added Net: Name=NetC4_A5
+Added Pin To Net: NetName=NetC4_B5 Pin=C4-B5
+Added Pin To Net: NetName=NetC4_B5 Pin=R21-1
+Added Net: Name=NetC4_B5
+Change Class Name : Old Net Name=temp New Net Name=top
+Added Member To Class: ClassName=top Member=Component R20 33K
+Added Member To Class: ClassName=top Member=Component R21 33K
+Change Room Name: Old Name=temp New Name=top
+Change Room Scope: Old Scope=InComponentClass('temp') New Scope=InComponentClass('top')

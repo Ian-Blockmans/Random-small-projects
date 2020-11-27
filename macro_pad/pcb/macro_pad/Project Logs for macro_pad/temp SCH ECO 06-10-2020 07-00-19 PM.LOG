@@ -1,0 +1,6 @@
+Replace Part C? atmel_prog in C:\Users\ian66\OneDrive\macro pad\pcb\macro_pad\temp.SchDoc with atmel_prog from generic_conn.SchLib
+Replace Part C? USB-C in C:\Users\ian66\OneDrive\macro pad\pcb\macro_pad\temp.SchDoc with USB-C from JST.SchLib
+Replace Part C? cap in C:\Users\ian66\OneDrive\macro pad\pcb\macro_pad\temp.SchDoc with cap from generic_components.SchLib
+Replace Part R? res0805 in C:\Users\ian66\OneDrive\macro pad\pcb\macro_pad\temp.SchDoc with res0805 from generic_components.SchLib
+Replace Part U? ATmega32U4 in C:\Users\ian66\OneDrive\macro pad\pcb\macro_pad\temp.SchDoc with ATmega32U4 from atmel.SchLib
+Replace Part U? ATmega32U4 in C:\Users\ian66\OneDrive\macro pad\pcb\macro_pad\temp.SchDoc with ATmega32U4 from atmel.SchLib

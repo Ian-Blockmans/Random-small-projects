@@ -1,0 +1,3 @@
+Record=TopLevelDocument|FileName=top.SchDoc
+Record=SheetSymbol|SourceDocument=top.SchDoc|Designator=LED|SchDesignator=LED|FileName=led_matrix.SchDoc|SymbolType=Normal|RawFileName=led_matrix.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=top.SchDoc|Designator=SW|SchDesignator=SW|FileName=switch.SchDoc|SymbolType=Normal|RawFileName=switch.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
