@@ -1,2 +1,2 @@
-# 16 key macropad
+# 16 key keyboard
 qmk opensource firmware
