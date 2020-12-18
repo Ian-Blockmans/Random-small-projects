@@ -1,6 +1,7 @@
 .build/obj_kb_default/common/action_tapping.o: \
  tmk_core/common/action_tapping.c keyboards/kb/config.h \
- quantum/config_common.h tmk_core/common/action.h \
+ quantum/config_common.h quantum/audio/song_list.h \
+ quantum/audio/musical_notes.h tmk_core/common/action.h \
  tmk_core/common/keyboard.h tmk_core/common/keycode.h \
  tmk_core/common/action_code.h tmk_core/common/action_macro.h \
  tmk_core/common/progmem.h tmk_core/common/action_layer.h \
@@ -11,6 +12,10 @@
 keyboards/kb/config.h:
 
 quantum/config_common.h:
+
+quantum/audio/song_list.h:
+
+quantum/audio/musical_notes.h:
 
 tmk_core/common/action.h:
 

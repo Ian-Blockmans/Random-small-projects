@@ -8,14 +8,16 @@
    8               	.Ltext0:
    9               		.cfi_sections	.debug_frame
   10               	.Letext0:
-  11               		.file 1 "/usr/lib/avr/include/stdint.h"
-  12               		.file 2 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
+  11               		.file 1 "tmk_core/common/report.h"
+  12               		.file 2 "/usr/lib/avr/include/stdint.h"
+  13               		.file 3 "lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
+  14               		.file 4 "tmk_core/common/action_util.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 kb.c
-     /tmp/ccK9b7uy.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccK9b7uy.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccK9b7uy.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccK9b7uy.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccK9b7uy.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccdnvKoT.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccdnvKoT.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccdnvKoT.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccdnvKoT.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccdnvKoT.s:6      *ABS*:0000000000000001 __zero_reg__
 
 NO UNDEFINED SYMBOLS

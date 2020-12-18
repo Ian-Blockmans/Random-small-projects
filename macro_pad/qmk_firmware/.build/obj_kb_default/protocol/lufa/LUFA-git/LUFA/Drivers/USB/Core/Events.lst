@@ -77,19 +77,19 @@
   43               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Events.c
-     /tmp/ccMKPFl8.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccMKPFl8.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccMKPFl8.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccMKPFl8.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccMKPFl8.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccMKPFl8.s:13     .text.USB_Event_Stub:0000000000000000 USB_Event_Stub
-     /tmp/ccMKPFl8.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_StartOfFrame
-     /tmp/ccMKPFl8.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Reset
-     /tmp/ccMKPFl8.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_WakeUp
-     /tmp/ccMKPFl8.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Suspend
-     /tmp/ccMKPFl8.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ConfigurationChanged
-     /tmp/ccMKPFl8.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ControlRequest
-     /tmp/ccMKPFl8.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Disconnect
-     /tmp/ccMKPFl8.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Connect
+     /tmp/cc42KJH9.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc42KJH9.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc42KJH9.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc42KJH9.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc42KJH9.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc42KJH9.s:13     .text.USB_Event_Stub:0000000000000000 USB_Event_Stub
+     /tmp/cc42KJH9.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_StartOfFrame
+     /tmp/cc42KJH9.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Reset
+     /tmp/cc42KJH9.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_WakeUp
+     /tmp/cc42KJH9.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Suspend
+     /tmp/cc42KJH9.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ConfigurationChanged
+     /tmp/cc42KJH9.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ControlRequest
+     /tmp/cc42KJH9.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Disconnect
+     /tmp/cc42KJH9.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Connect
 
 NO UNDEFINED SYMBOLS

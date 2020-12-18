@@ -9,115 +9,150 @@
    9               		.cfi_sections	.debug_frame
   10               		.section	.text.scan_keycode,"ax",@progbits
   12               	scan_keycode:
-  13               	.LFB104:
-  14               		.file 1 "./tmk_core/common/bootmagic.c"
-   1:./tmk_core/common/bootmagic.c **** #include <stdint.h>
-   2:./tmk_core/common/bootmagic.c **** #include <stdbool.h>
-   3:./tmk_core/common/bootmagic.c **** #include "wait.h"
-   4:./tmk_core/common/bootmagic.c **** #include "matrix.h"
-   5:./tmk_core/common/bootmagic.c **** #include "bootloader.h"
-   6:./tmk_core/common/bootmagic.c **** #include "debug.h"
-   7:./tmk_core/common/bootmagic.c **** #include "keymap.h"
-   8:./tmk_core/common/bootmagic.c **** #include "host.h"
-   9:./tmk_core/common/bootmagic.c **** #include "action_layer.h"
-  10:./tmk_core/common/bootmagic.c **** #include "eeconfig.h"
-  11:./tmk_core/common/bootmagic.c **** #include "bootmagic.h"
-  12:./tmk_core/common/bootmagic.c **** 
-  13:./tmk_core/common/bootmagic.c **** keymap_config_t keymap_config;
-  14:./tmk_core/common/bootmagic.c **** 
-  15:./tmk_core/common/bootmagic.c **** void bootmagic(void)
-  16:./tmk_core/common/bootmagic.c **** {
-  17:./tmk_core/common/bootmagic.c ****     /* check signature */
-  18:./tmk_core/common/bootmagic.c ****     if (!eeconfig_is_enabled()) {
-  19:./tmk_core/common/bootmagic.c ****         eeconfig_init();
-  20:./tmk_core/common/bootmagic.c ****     }
-  21:./tmk_core/common/bootmagic.c **** 
-  22:./tmk_core/common/bootmagic.c ****     /* do scans in case of bounce */
-  23:./tmk_core/common/bootmagic.c ****     print("bootmagic scan: ... ");
-  24:./tmk_core/common/bootmagic.c ****     uint8_t scan = 100;
-  25:./tmk_core/common/bootmagic.c ****     while (scan--) { matrix_scan(); wait_ms(10); }
-  26:./tmk_core/common/bootmagic.c ****     print("done.\n");
-  27:./tmk_core/common/bootmagic.c **** 
-  28:./tmk_core/common/bootmagic.c ****     /* bootmagic skip */
-  29:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SKIP)) {
-  30:./tmk_core/common/bootmagic.c ****         return;
-  31:./tmk_core/common/bootmagic.c ****     }
-  32:./tmk_core/common/bootmagic.c **** 
-  33:./tmk_core/common/bootmagic.c ****     /* eeconfig clear */
-  34:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_EEPROM_CLEAR)) {
-  35:./tmk_core/common/bootmagic.c ****         eeconfig_init();
-  36:./tmk_core/common/bootmagic.c ****     }
-  37:./tmk_core/common/bootmagic.c **** 
-  38:./tmk_core/common/bootmagic.c ****     /* bootloader */
-  39:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_BOOTLOADER)) {
-  40:./tmk_core/common/bootmagic.c ****         bootloader_jump();
-  41:./tmk_core/common/bootmagic.c ****     }
-  42:./tmk_core/common/bootmagic.c **** 
-  43:./tmk_core/common/bootmagic.c ****     /* debug enable */
-  44:./tmk_core/common/bootmagic.c ****     debug_config.raw = eeconfig_read_debug();
-  45:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_ENABLE)) {
-  46:./tmk_core/common/bootmagic.c ****         if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_MATRIX)) {
-  47:./tmk_core/common/bootmagic.c ****             debug_config.matrix = !debug_config.matrix;
-  48:./tmk_core/common/bootmagic.c ****         } else if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_KEYBOARD)) {
-  49:./tmk_core/common/bootmagic.c ****             debug_config.keyboard = !debug_config.keyboard;
-  50:./tmk_core/common/bootmagic.c ****         } else if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_MOUSE)) {
-  51:./tmk_core/common/bootmagic.c ****             debug_config.mouse = !debug_config.mouse;
-  52:./tmk_core/common/bootmagic.c ****         } else {
-  53:./tmk_core/common/bootmagic.c ****             debug_config.enable = !debug_config.enable;
-  54:./tmk_core/common/bootmagic.c ****         }
-  55:./tmk_core/common/bootmagic.c ****     }
-  56:./tmk_core/common/bootmagic.c ****     eeconfig_update_debug(debug_config.raw);
-  57:./tmk_core/common/bootmagic.c **** 
-  58:./tmk_core/common/bootmagic.c ****     /* keymap config */
-  59:./tmk_core/common/bootmagic.c ****     keymap_config.raw = eeconfig_read_keymap();
-  60:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_CONTROL_CAPSLOCK)) {
-  61:./tmk_core/common/bootmagic.c ****         keymap_config.swap_control_capslock = !keymap_config.swap_control_capslock;
-  62:./tmk_core/common/bootmagic.c ****     }
-  63:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_CAPSLOCK_TO_CONTROL)) {
-  64:./tmk_core/common/bootmagic.c ****         keymap_config.capslock_to_control = !keymap_config.capslock_to_control;
-  65:./tmk_core/common/bootmagic.c ****     }
-  66:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_LALT_LGUI)) {
-  67:./tmk_core/common/bootmagic.c ****         keymap_config.swap_lalt_lgui = !keymap_config.swap_lalt_lgui;
-  68:./tmk_core/common/bootmagic.c ****     }
-  69:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_RALT_RGUI)) {
-  70:./tmk_core/common/bootmagic.c ****         keymap_config.swap_ralt_rgui = !keymap_config.swap_ralt_rgui;
-  71:./tmk_core/common/bootmagic.c ****     }
-  72:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_NO_GUI)) {
-  73:./tmk_core/common/bootmagic.c ****         keymap_config.no_gui = !keymap_config.no_gui;
-  74:./tmk_core/common/bootmagic.c ****     }
-  75:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_GRAVE_ESC)) {
-  76:./tmk_core/common/bootmagic.c ****         keymap_config.swap_grave_esc = !keymap_config.swap_grave_esc;
-  77:./tmk_core/common/bootmagic.c ****     }
-  78:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_BACKSLASH_BACKSPACE)) {
-  79:./tmk_core/common/bootmagic.c ****         keymap_config.swap_backslash_backspace = !keymap_config.swap_backslash_backspace;
-  80:./tmk_core/common/bootmagic.c ****     }
-  81:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_HOST_NKRO)) {
-  82:./tmk_core/common/bootmagic.c ****         keymap_config.nkro = !keymap_config.nkro;
-  83:./tmk_core/common/bootmagic.c ****     }
-  84:./tmk_core/common/bootmagic.c ****     eeconfig_update_keymap(keymap_config.raw);
-  85:./tmk_core/common/bootmagic.c **** 
-  86:./tmk_core/common/bootmagic.c ****     /* default layer */
-  87:./tmk_core/common/bootmagic.c ****     uint8_t default_layer = 0;
-  88:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_0)) { default_layer |= (1<<0); }
-  89:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_1)) { default_layer |= (1<<1); }
-  90:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_2)) { default_layer |= (1<<2); }
-  91:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_3)) { default_layer |= (1<<3); }
-  92:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_4)) { default_layer |= (1<<4); }
-  93:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_5)) { default_layer |= (1<<5); }
-  94:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_6)) { default_layer |= (1<<6); }
-  95:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_7)) { default_layer |= (1<<7); }
-  96:./tmk_core/common/bootmagic.c ****     if (default_layer) {
-  97:./tmk_core/common/bootmagic.c ****         eeconfig_update_default_layer(default_layer);
-  98:./tmk_core/common/bootmagic.c ****         default_layer_set((uint32_t)default_layer);
-  99:./tmk_core/common/bootmagic.c ****     } else {
- 100:./tmk_core/common/bootmagic.c ****         default_layer = eeconfig_read_default_layer();
- 101:./tmk_core/common/bootmagic.c ****         default_layer_set((uint32_t)default_layer);
- 102:./tmk_core/common/bootmagic.c ****     }
- 103:./tmk_core/common/bootmagic.c **** }
- 104:./tmk_core/common/bootmagic.c **** 
- 105:./tmk_core/common/bootmagic.c **** static bool scan_keycode(uint8_t keycode)
- 106:./tmk_core/common/bootmagic.c **** {
-  15               		.loc 1 106 0
+  13               	.LFB106:
+  14               		.file 1 "tmk_core/common/bootmagic.c"
+   1:tmk_core/common/bootmagic.c **** #include <stdint.h>
+   2:tmk_core/common/bootmagic.c **** #include <stdbool.h>
+   3:tmk_core/common/bootmagic.c **** #include "wait.h"
+   4:tmk_core/common/bootmagic.c **** #include "matrix.h"
+   5:tmk_core/common/bootmagic.c **** #include "bootloader.h"
+   6:tmk_core/common/bootmagic.c **** #include "debug.h"
+   7:tmk_core/common/bootmagic.c **** #include "keymap.h"
+   8:tmk_core/common/bootmagic.c **** #include "host.h"
+   9:tmk_core/common/bootmagic.c **** #include "action_layer.h"
+  10:tmk_core/common/bootmagic.c **** #include "eeconfig.h"
+  11:tmk_core/common/bootmagic.c **** #include "bootmagic.h"
+  12:tmk_core/common/bootmagic.c **** 
+  13:tmk_core/common/bootmagic.c **** keymap_config_t keymap_config;
+  14:tmk_core/common/bootmagic.c **** 
+  15:tmk_core/common/bootmagic.c **** /** \brief Bootmagic
+  16:tmk_core/common/bootmagic.c ****  *
+  17:tmk_core/common/bootmagic.c ****  * FIXME: needs doc
+  18:tmk_core/common/bootmagic.c ****  */
+  19:tmk_core/common/bootmagic.c **** void bootmagic(void) {
+  20:tmk_core/common/bootmagic.c ****     /* check signature */
+  21:tmk_core/common/bootmagic.c ****     if (!eeconfig_is_enabled()) {
+  22:tmk_core/common/bootmagic.c ****         eeconfig_init();
+  23:tmk_core/common/bootmagic.c ****     }
+  24:tmk_core/common/bootmagic.c **** 
+  25:tmk_core/common/bootmagic.c ****     /* do scans in case of bounce */
+  26:tmk_core/common/bootmagic.c ****     print("bootmagic scan: ... ");
+  27:tmk_core/common/bootmagic.c ****     uint8_t scan = 100;
+  28:tmk_core/common/bootmagic.c ****     while (scan--) {
+  29:tmk_core/common/bootmagic.c ****         matrix_scan();
+  30:tmk_core/common/bootmagic.c ****         wait_ms(10);
+  31:tmk_core/common/bootmagic.c ****     }
+  32:tmk_core/common/bootmagic.c ****     print("done.\n");
+  33:tmk_core/common/bootmagic.c **** 
+  34:tmk_core/common/bootmagic.c ****     /* bootmagic skip */
+  35:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SKIP)) {
+  36:tmk_core/common/bootmagic.c ****         return;
+  37:tmk_core/common/bootmagic.c ****     }
+  38:tmk_core/common/bootmagic.c **** 
+  39:tmk_core/common/bootmagic.c ****     /* eeconfig clear */
+  40:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_EEPROM_CLEAR)) {
+  41:tmk_core/common/bootmagic.c ****         eeconfig_init();
+  42:tmk_core/common/bootmagic.c ****     }
+  43:tmk_core/common/bootmagic.c **** 
+  44:tmk_core/common/bootmagic.c ****     /* bootloader */
+  45:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_BOOTLOADER)) {
+  46:tmk_core/common/bootmagic.c ****         bootloader_jump();
+  47:tmk_core/common/bootmagic.c ****     }
+  48:tmk_core/common/bootmagic.c **** 
+  49:tmk_core/common/bootmagic.c ****     /* debug enable */
+  50:tmk_core/common/bootmagic.c ****     debug_config.raw = eeconfig_read_debug();
+  51:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_ENABLE)) {
+  52:tmk_core/common/bootmagic.c ****         if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_MATRIX)) {
+  53:tmk_core/common/bootmagic.c ****             debug_config.matrix = !debug_config.matrix;
+  54:tmk_core/common/bootmagic.c ****         } else if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_KEYBOARD)) {
+  55:tmk_core/common/bootmagic.c ****             debug_config.keyboard = !debug_config.keyboard;
+  56:tmk_core/common/bootmagic.c ****         } else if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_MOUSE)) {
+  57:tmk_core/common/bootmagic.c ****             debug_config.mouse = !debug_config.mouse;
+  58:tmk_core/common/bootmagic.c ****         } else {
+  59:tmk_core/common/bootmagic.c ****             debug_config.enable = !debug_config.enable;
+  60:tmk_core/common/bootmagic.c ****         }
+  61:tmk_core/common/bootmagic.c ****     }
+  62:tmk_core/common/bootmagic.c ****     eeconfig_update_debug(debug_config.raw);
+  63:tmk_core/common/bootmagic.c **** 
+  64:tmk_core/common/bootmagic.c ****     /* keymap config */
+  65:tmk_core/common/bootmagic.c ****     keymap_config.raw = eeconfig_read_keymap();
+  66:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_CONTROL_CAPSLOCK)) {
+  67:tmk_core/common/bootmagic.c ****         keymap_config.swap_control_capslock = !keymap_config.swap_control_capslock;
+  68:tmk_core/common/bootmagic.c ****     }
+  69:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_CAPSLOCK_TO_CONTROL)) {
+  70:tmk_core/common/bootmagic.c ****         keymap_config.capslock_to_control = !keymap_config.capslock_to_control;
+  71:tmk_core/common/bootmagic.c ****     }
+  72:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_LALT_LGUI)) {
+  73:tmk_core/common/bootmagic.c ****         keymap_config.swap_lalt_lgui = !keymap_config.swap_lalt_lgui;
+  74:tmk_core/common/bootmagic.c ****     }
+  75:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_RALT_RGUI)) {
+  76:tmk_core/common/bootmagic.c ****         keymap_config.swap_ralt_rgui = !keymap_config.swap_ralt_rgui;
+  77:tmk_core/common/bootmagic.c ****     }
+  78:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_NO_GUI)) {
+  79:tmk_core/common/bootmagic.c ****         keymap_config.no_gui = !keymap_config.no_gui;
+  80:tmk_core/common/bootmagic.c ****     }
+  81:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_GRAVE_ESC)) {
+  82:tmk_core/common/bootmagic.c ****         keymap_config.swap_grave_esc = !keymap_config.swap_grave_esc;
+  83:tmk_core/common/bootmagic.c ****     }
+  84:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_BACKSLASH_BACKSPACE)) {
+  85:tmk_core/common/bootmagic.c ****         keymap_config.swap_backslash_backspace = !keymap_config.swap_backslash_backspace;
+  86:tmk_core/common/bootmagic.c ****     }
+  87:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_HOST_NKRO)) {
+  88:tmk_core/common/bootmagic.c ****         keymap_config.nkro = !keymap_config.nkro;
+  89:tmk_core/common/bootmagic.c ****     }
+  90:tmk_core/common/bootmagic.c ****     eeconfig_update_keymap(keymap_config.raw);
+  91:tmk_core/common/bootmagic.c **** 
+  92:tmk_core/common/bootmagic.c ****     /* default layer */
+  93:tmk_core/common/bootmagic.c ****     uint8_t default_layer = 0;
+  94:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_0)) {
+  95:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 0);
+  96:tmk_core/common/bootmagic.c ****     }
+  97:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_1)) {
+  98:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 1);
+  99:tmk_core/common/bootmagic.c ****     }
+ 100:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_2)) {
+ 101:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 2);
+ 102:tmk_core/common/bootmagic.c ****     }
+ 103:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_3)) {
+ 104:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 3);
+ 105:tmk_core/common/bootmagic.c ****     }
+ 106:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_4)) {
+ 107:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 4);
+ 108:tmk_core/common/bootmagic.c ****     }
+ 109:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_5)) {
+ 110:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 5);
+ 111:tmk_core/common/bootmagic.c ****     }
+ 112:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_6)) {
+ 113:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 6);
+ 114:tmk_core/common/bootmagic.c ****     }
+ 115:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_7)) {
+ 116:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 7);
+ 117:tmk_core/common/bootmagic.c ****     }
+ 118:tmk_core/common/bootmagic.c ****     if (default_layer) {
+ 119:tmk_core/common/bootmagic.c ****         eeconfig_update_default_layer(default_layer);
+ 120:tmk_core/common/bootmagic.c ****         default_layer_set((layer_state_t)default_layer);
+ 121:tmk_core/common/bootmagic.c ****     } else {
+ 122:tmk_core/common/bootmagic.c ****         default_layer = eeconfig_read_default_layer();
+ 123:tmk_core/common/bootmagic.c ****         default_layer_set((layer_state_t)default_layer);
+ 124:tmk_core/common/bootmagic.c ****     }
+ 125:tmk_core/common/bootmagic.c ****     /* Also initialize layer state to trigger callback functions for layer_state */
+ 126:tmk_core/common/bootmagic.c ****     layer_state_set_kb((layer_state_t)layer_state);
+ 127:tmk_core/common/bootmagic.c **** 
+ 128:tmk_core/common/bootmagic.c ****     /* EE_HANDS handedness */
+ 129:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_EE_HANDS_LEFT)) {
+ 130:tmk_core/common/bootmagic.c ****         eeconfig_update_handedness(true);
+ 131:tmk_core/common/bootmagic.c ****     }
+ 132:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_EE_HANDS_RIGHT)) {
+ 133:tmk_core/common/bootmagic.c ****         eeconfig_update_handedness(false);
+ 134:tmk_core/common/bootmagic.c ****     }
+ 135:tmk_core/common/bootmagic.c **** }
+ 136:tmk_core/common/bootmagic.c **** 
+ 137:tmk_core/common/bootmagic.c **** /** \brief Scan Keycode
+ 138:tmk_core/common/bootmagic.c ****  *
+ 139:tmk_core/common/bootmagic.c ****  * FIXME: needs doc
+ 140:tmk_core/common/bootmagic.c ****  */
+ 141:tmk_core/common/bootmagic.c **** static bool scan_keycode(uint8_t keycode) {
+  15               		.loc 1 141 0
   16               		.cfi_startproc
   17               	.LVL0:
   18 0000 CF92      		push r12
@@ -154,31 +189,31 @@
   49               	.L__stack_usage = 7
   50               	.LVL1:
   51               	.LBB4:
- 107:./tmk_core/common/bootmagic.c ****     for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
-  52               		.loc 1 107 0
+ 142:tmk_core/common/bootmagic.c ****     for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
+  52               		.loc 1 142 0
   53 000e C0E0      		ldi r28,0
   54               	.LBB5:
   55               	.LBB6:
- 108:./tmk_core/common/bootmagic.c ****         matrix_row_t matrix_row = matrix_get_row(r);
- 109:./tmk_core/common/bootmagic.c ****         for (uint8_t c = 0; c < MATRIX_COLS; c++) {
- 110:./tmk_core/common/bootmagic.c ****             if (matrix_row & ((matrix_row_t)1<<c)) {
- 111:./tmk_core/common/bootmagic.c ****                 if (keycode == keymap_key_to_keycode(0, (keypos_t){ .row = r, .col = c })) {
-  56               		.loc 1 111 0
+ 143:tmk_core/common/bootmagic.c ****         matrix_row_t matrix_row = matrix_get_row(r);
+ 144:tmk_core/common/bootmagic.c ****         for (uint8_t c = 0; c < MATRIX_COLS; c++) {
+ 145:tmk_core/common/bootmagic.c ****             if (matrix_row & ((matrix_row_t)1 << c)) {
+ 146:tmk_core/common/bootmagic.c ****                 if (keycode == keymap_key_to_keycode(0, (keypos_t){.row = r, .col = c})) {
+  56               		.loc 1 146 0
   57 0010 E82E      		mov r14,r24
   58 0012 F12C      		mov r15,__zero_reg__
   59               	.LVL2:
   60               	.L7:
   61               	.LBE6:
- 108:./tmk_core/common/bootmagic.c ****         matrix_row_t matrix_row = matrix_get_row(r);
-  62               		.loc 1 108 0
+ 143:tmk_core/common/bootmagic.c ****         matrix_row_t matrix_row = matrix_get_row(r);
+  62               		.loc 1 143 0
   63 0014 8C2F      		mov r24,r28
   64 0016 0E94 0000 		call matrix_get_row
   65               	.LVL3:
   66 001a 00E0      		ldi r16,0
   67 001c 10E0      		ldi r17,0
   68               	.LBB7:
- 110:./tmk_core/common/bootmagic.c ****                 if (keycode == keymap_key_to_keycode(0, (keypos_t){ .row = r, .col = c })) {
-  69               		.loc 1 110 0
+ 145:tmk_core/common/bootmagic.c ****                 if (keycode == keymap_key_to_keycode(0, (keypos_t){.row = r, .col = c})) {
+  69               		.loc 1 145 0
   70 001e C82E      		mov r12,r24
   71 0020 D12C      		mov r13,__zero_reg__
   72               	.LVL4:
@@ -199,14 +234,14 @@
   87 0034 0F5F      		subi r16,-1
   88 0036 1F4F      		sbci r17,-1
   89               	.LVL6:
- 109:./tmk_core/common/bootmagic.c ****             if (matrix_row & ((matrix_row_t)1<<c)) {
-  90               		.loc 1 109 0
+ 144:tmk_core/common/bootmagic.c ****             if (matrix_row & ((matrix_row_t)1 << c)) {
+  90               		.loc 1 144 0
   91 0038 0430      		cpi r16,4
   92 003a 1105      		cpc r17,__zero_reg__
   93 003c 01F4      		brne .L3
   94 003e 00C0      		rjmp .L13
   95               	.L2:
-  96               		.loc 1 111 0
+  96               		.loc 1 146 0
   97 0040 602F      		mov r22,r16
   98 0042 7C2F      		mov r23,r28
   99 0044 80E0      		ldi r24,0
@@ -215,32 +250,32 @@
  102 004a E816      		cp r14,r24
  103 004c F906      		cpc r15,r25
  104 004e 01F4      		brne .L6
- 112:./tmk_core/common/bootmagic.c ****                     return true;
- 105               		.loc 1 112 0
+ 147:tmk_core/common/bootmagic.c ****                     return true;
+ 105               		.loc 1 147 0
  106 0050 81E0      		ldi r24,lo8(1)
  107 0052 00C0      		rjmp .L5
  108               	.L13:
  109               	.LBE7:
  110               	.LBE5:
- 107:./tmk_core/common/bootmagic.c ****         matrix_row_t matrix_row = matrix_get_row(r);
- 111               		.loc 1 107 0 discriminator 2
+ 142:tmk_core/common/bootmagic.c ****         matrix_row_t matrix_row = matrix_get_row(r);
+ 111               		.loc 1 142 0 discriminator 2
  112 0054 CF5F      		subi r28,lo8(-(1))
  113               	.LVL8:
  114 0056 C430      		cpi r28,lo8(4)
  115 0058 01F4      		brne .L7
  116               	.LBE4:
- 113:./tmk_core/common/bootmagic.c ****                 }
- 114:./tmk_core/common/bootmagic.c ****             }
- 115:./tmk_core/common/bootmagic.c ****         }
- 116:./tmk_core/common/bootmagic.c ****     }
- 117:./tmk_core/common/bootmagic.c ****     return false;
- 117               		.loc 1 117 0
+ 148:tmk_core/common/bootmagic.c ****                 }
+ 149:tmk_core/common/bootmagic.c ****             }
+ 150:tmk_core/common/bootmagic.c ****         }
+ 151:tmk_core/common/bootmagic.c ****     }
+ 152:tmk_core/common/bootmagic.c ****     return false;
+ 117               		.loc 1 152 0
  118 005a 80E0      		ldi r24,0
  119               	.LVL9:
  120               	.L5:
  121               	/* epilogue start */
- 118:./tmk_core/common/bootmagic.c **** }
- 122               		.loc 1 118 0
+ 153:tmk_core/common/bootmagic.c **** }
+ 122               		.loc 1 153 0
  123 005c CF91      		pop r28
  124               	.LVL10:
  125 005e 1F91      		pop r17
@@ -253,15 +288,18 @@
  132               	.LVL12:
  133 006a 0895      		ret
  134               		.cfi_endproc
- 135               	.LFE104:
+ 135               	.LFE106:
  137               		.section	.text.bootmagic_scan_keycode,"ax",@progbits
  138               	.global	bootmagic_scan_keycode
  140               	bootmagic_scan_keycode:
- 141               	.LFB105:
- 119:./tmk_core/common/bootmagic.c **** 
- 120:./tmk_core/common/bootmagic.c **** bool bootmagic_scan_keycode(uint8_t keycode)
- 121:./tmk_core/common/bootmagic.c **** {
- 142               		.loc 1 121 0
+ 141               	.LFB107:
+ 154:tmk_core/common/bootmagic.c **** 
+ 155:tmk_core/common/bootmagic.c **** /** \brief Bootmagic Scan Keycode
+ 156:tmk_core/common/bootmagic.c ****  *
+ 157:tmk_core/common/bootmagic.c ****  * FIXME: needs doc
+ 158:tmk_core/common/bootmagic.c ****  */
+ 159:tmk_core/common/bootmagic.c **** bool bootmagic_scan_keycode(uint8_t keycode) {
+ 142               		.loc 1 159 0
  143               		.cfi_startproc
  144               	.LVL13:
  145 0000 CF93      		push r28
@@ -273,42 +311,42 @@
  151               	/* stack size = 1 */
  152               	.L__stack_usage = 1
  153 0002 C82F      		mov r28,r24
- 122:./tmk_core/common/bootmagic.c ****     if (!scan_keycode(BOOTMAGIC_KEY_SALT)) return false;
- 154               		.loc 1 122 0
+ 160:tmk_core/common/bootmagic.c ****     if (!scan_keycode(BOOTMAGIC_KEY_SALT)) return false;
+ 154               		.loc 1 160 0
  155 0004 8CE2      		ldi r24,lo8(44)
  156               	.LVL14:
  157 0006 0E94 0000 		call scan_keycode
  158               	.LVL15:
  159 000a 8823      		tst r24
  160 000c 01F0      		breq .L15
- 123:./tmk_core/common/bootmagic.c **** 
- 124:./tmk_core/common/bootmagic.c ****     return scan_keycode(keycode);
- 161               		.loc 1 124 0
+ 161:tmk_core/common/bootmagic.c **** 
+ 162:tmk_core/common/bootmagic.c ****     return scan_keycode(keycode);
+ 161               		.loc 1 162 0
  162 000e 8C2F      		mov r24,r28
  163               	/* epilogue start */
- 125:./tmk_core/common/bootmagic.c **** }...
- 164               		.loc 1 125 0
+ 163:tmk_core/common/bootmagic.c **** }
+ 164               		.loc 1 163 0
  165 0010 CF91      		pop r28
  166               	.LVL16:
- 124:./tmk_core/common/bootmagic.c ****     return scan_keycode(keycode);
- 167               		.loc 1 124 0
+ 162:tmk_core/common/bootmagic.c **** }
+ 167               		.loc 1 162 0
  168 0012 0C94 0000 		jmp scan_keycode
  169               	.LVL17:
  170               	.L15:
- 171               		.loc 1 125 0
+ 171               		.loc 1 163 0
  172 0016 80E0      		ldi r24,0
  173               	/* epilogue start */
  174 0018 CF91      		pop r28
  175               	.LVL18:
  176 001a 0895      		ret
  177               		.cfi_endproc
- 178               	.LFE105:
+ 178               	.LFE107:
  180               		.section	.text.bootmagic,"ax",@progbits
  181               	.global	bootmagic
  183               	bootmagic:
- 184               	.LFB103:
-  16:./tmk_core/common/bootmagic.c **** {
- 185               		.loc 1 16 0
+ 184               	.LFB105:
+  19:tmk_core/common/bootmagic.c ****     /* check signature */
+ 185               		.loc 1 19 0
  186               		.cfi_startproc
  187 0000 CF93      		push r28
  188               	.LCFI8:
@@ -318,30 +356,30 @@
  192               	/* frame size = 0 */
  193               	/* stack size = 1 */
  194               	.L__stack_usage = 1
-  18:./tmk_core/common/bootmagic.c ****     if (!eeconfig_is_enabled()) {
- 195               		.loc 1 18 0
+  21:tmk_core/common/bootmagic.c ****         eeconfig_init();
+ 195               		.loc 1 21 0
  196 0002 0E94 0000 		call eeconfig_is_enabled
  197               	.LVL19:
  198 0006 8111      		cpse r24,__zero_reg__
  199 0008 00C0      		rjmp .L17
-  19:./tmk_core/common/bootmagic.c ****         eeconfig_init();
- 200               		.loc 1 19 0
+  22:tmk_core/common/bootmagic.c ****     }
+ 200               		.loc 1 22 0
  201 000a 0E94 0000 		call eeconfig_init
  202               	.LVL20:
  203               	.L17:
-  16:./tmk_core/common/bootmagic.c **** {
- 204               		.loc 1 16 0 discriminator 1
+  19:tmk_core/common/bootmagic.c ****     /* check signature */
+ 204               		.loc 1 19 0
  205 000e C5E6      		ldi r28,lo8(101)
  206               	.L18:
  207               	.LVL21:
  208 0010 C150      		subi r28,lo8(-(-1))
  209               	.LVL22:
-  25:./tmk_core/common/bootmagic.c ****     while (scan--) { matrix_scan(); wait_ms(10); }
- 210               		.loc 1 25 0 discriminator 1
- 211 0012 01F0      		breq .L98
+  28:tmk_core/common/bootmagic.c ****         matrix_scan();
+ 210               		.loc 1 28 0
+ 211 0012 01F0      		breq .L108
  212               	.LVL23:
-  25:./tmk_core/common/bootmagic.c ****     while (scan--) { matrix_scan(); wait_ms(10); }
- 213               		.loc 1 25 0 is_stmt 0 discriminator 2
+  29:tmk_core/common/bootmagic.c ****         wait_ms(10);
+ 213               		.loc 1 29 0
  214 0014 0E94 0000 		call matrix_scan
  215               	.LVL24:
  216               	.LBB8:
@@ -534,7 +572,7 @@
  185:/usr/lib/avr/include/util/delay.h **** 	#endif
  186:/usr/lib/avr/include/util/delay.h **** 
  187:/usr/lib/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 219               		.loc 2 187 0 is_stmt 1 discriminator 2
+ 219               		.loc 2 187 0
  220 0018 8FE3      		ldi r24,lo8(-25537)
  221 001a 9CE9      		ldi r25,hi8(-25537)
  222 001c 0197      	1:	sbiw r24,1
@@ -543,59 +581,59 @@
  225 0022 0000      		nop
  226 0024 00C0      		rjmp .L18
  227               	.LVL25:
- 228               	.L98:
+ 228               	.L108:
  229               	.LBE9:
  230               	.LBE8:
-  29:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SKIP)) {
- 231               		.loc 1 29 0
+  35:tmk_core/common/bootmagic.c ****         return;
+ 231               		.loc 1 35 0
  232 0026 89E2      		ldi r24,lo8(41)
  233 0028 0E94 0000 		call bootmagic_scan_keycode
  234               	.LVL26:
  235 002c 8111      		cpse r24,__zero_reg__
  236 002e 00C0      		rjmp .L16
-  34:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_EEPROM_CLEAR)) {
- 237               		.loc 1 34 0
+  40:tmk_core/common/bootmagic.c ****         eeconfig_init();
+ 237               		.loc 1 40 0
  238 0030 8AE2      		ldi r24,lo8(42)
  239 0032 0E94 0000 		call bootmagic_scan_keycode
  240               	.LVL27:
  241 0036 8111      		cpse r24,__zero_reg__
-  35:./tmk_core/common/bootmagic.c ****         eeconfig_init();
- 242               		.loc 1 35 0
+  41:tmk_core/common/bootmagic.c ****     }
+ 242               		.loc 1 41 0
  243 0038 0E94 0000 		call eeconfig_init
  244               	.LVL28:
- 245               	.L21:
-  39:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_BOOTLOADER)) {
- 246               		.loc 1 39 0
+ 245               	.L22:
+  45:tmk_core/common/bootmagic.c ****         bootloader_jump();
+ 246               		.loc 1 45 0
  247 003c 85E0      		ldi r24,lo8(5)
  248 003e 0E94 0000 		call bootmagic_scan_keycode
  249               	.LVL29:
  250 0042 8111      		cpse r24,__zero_reg__
-  40:./tmk_core/common/bootmagic.c ****         bootloader_jump();
- 251               		.loc 1 40 0
+  46:tmk_core/common/bootmagic.c ****     }
+ 251               		.loc 1 46 0
  252 0044 0E94 0000 		call bootloader_jump
  253               	.LVL30:
- 254               	.L22:
-  44:./tmk_core/common/bootmagic.c ****     debug_config.raw = eeconfig_read_debug();
- 255               		.loc 1 44 0
+ 254               	.L23:
+  50:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_ENABLE)) {
+ 255               		.loc 1 50 0
  256 0048 0E94 0000 		call eeconfig_read_debug
  257               	.LVL31:
  258 004c 8093 0000 		sts debug_config,r24
-  45:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_ENABLE)) {
- 259               		.loc 1 45 0
+  51:tmk_core/common/bootmagic.c ****         if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_MATRIX)) {
+ 259               		.loc 1 51 0
  260 0050 87E0      		ldi r24,lo8(7)
  261 0052 0E94 0000 		call bootmagic_scan_keycode
  262               	.LVL32:
  263 0056 8823      		tst r24
- 264 0058 01F0      		breq .L23
-  46:./tmk_core/common/bootmagic.c ****         if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_MATRIX)) {
- 265               		.loc 1 46 0
+ 264 0058 01F0      		breq .L24
+  52:tmk_core/common/bootmagic.c ****             debug_config.matrix = !debug_config.matrix;
+ 265               		.loc 1 52 0
  266 005a 8BE1      		ldi r24,lo8(27)
  267 005c 0E94 0000 		call bootmagic_scan_keycode
  268               	.LVL33:
  269 0060 8823      		tst r24
- 270 0062 01F0      		breq .L24
-  47:./tmk_core/common/bootmagic.c ****             debug_config.matrix = !debug_config.matrix;
- 271               		.loc 1 47 0
+ 270 0062 01F0      		breq .L25
+  53:tmk_core/common/bootmagic.c ****         } else if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_KEYBOARD)) {
+ 271               		.loc 1 53 0
  272 0064 8091 0000 		lds r24,debug_config
  273 0068 81FB      		bst r24,1
  274 006a 2227      		clr r18
@@ -604,17 +642,17 @@
  277 0070 9227      		eor r25,r18
  278 0072 90FB      		bst r25,0
  279 0074 81F9      		bld r24,1
- 280 0076 00C0      		rjmp .L95
- 281               	.L24:
-  48:./tmk_core/common/bootmagic.c ****         } else if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_KEYBOARD)) {
- 282               		.loc 1 48 0
+ 280 0076 00C0      		rjmp .L105
+ 281               	.L25:
+  54:tmk_core/common/bootmagic.c ****             debug_config.keyboard = !debug_config.keyboard;
+ 282               		.loc 1 54 0
  283 0078 8EE0      		ldi r24,lo8(14)
  284 007a 0E94 0000 		call bootmagic_scan_keycode
  285               	.LVL34:
  286 007e 8823      		tst r24
- 287 0080 01F0      		breq .L25
-  49:./tmk_core/common/bootmagic.c ****             debug_config.keyboard = !debug_config.keyboard;
- 288               		.loc 1 49 0
+ 287 0080 01F0      		breq .L26
+  55:tmk_core/common/bootmagic.c ****         } else if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_MOUSE)) {
+ 288               		.loc 1 55 0
  289 0082 8091 0000 		lds r24,debug_config
  290 0086 82FB      		bst r24,2
  291 0088 2227      		clr r18
@@ -623,20 +661,20 @@
  294 008e 9227      		eor r25,r18
  295 0090 90FB      		bst r25,0
  296 0092 82F9      		bld r24,2
- 297               	.L95:
+ 297               	.L105:
  298 0094 8093 0000 		sts debug_config,r24
- 299 0098 00C0      		rjmp .L23
- 300               	.L25:
-  50:./tmk_core/common/bootmagic.c ****         } else if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEBUG_MOUSE)) {
- 301               		.loc 1 50 0
+ 299 0098 00C0      		rjmp .L24
+ 300               	.L26:
+  56:tmk_core/common/bootmagic.c ****             debug_config.mouse = !debug_config.mouse;
+ 301               		.loc 1 56 0
  302 009a 80E1      		ldi r24,lo8(16)
  303 009c 0E94 0000 		call bootmagic_scan_keycode
  304               	.LVL35:
  305 00a0 9091 0000 		lds r25,debug_config
  306 00a4 8823      		tst r24
- 307 00a6 01F0      		breq .L26
-  51:./tmk_core/common/bootmagic.c ****             debug_config.mouse = !debug_config.mouse;
- 308               		.loc 1 51 0
+ 307 00a6 01F0      		breq .L27
+  57:tmk_core/common/bootmagic.c ****         } else {
+ 308               		.loc 1 57 0
  309 00a8 93FB      		bst r25,3
  310 00aa 2227      		clr r18
  311 00ac 20F9      		bld r18,0
@@ -644,338 +682,370 @@
  313 00b0 8227      		eor r24,r18
  314 00b2 80FB      		bst r24,0
  315 00b4 93F9      		bld r25,3
- 316 00b6 00C0      		rjmp .L96
- 317               	.L26:
-  53:./tmk_core/common/bootmagic.c ****             debug_config.enable = !debug_config.enable;
- 318               		.loc 1 53 0
+ 316 00b6 00C0      		rjmp .L106
+ 317               	.L27:
+  59:tmk_core/common/bootmagic.c ****         }
+ 318               		.loc 1 59 0
  319 00b8 892F      		mov r24,r25
  320 00ba 8095      		com r24
  321 00bc 80FB      		bst r24,0
  322 00be 90F9      		bld r25,0
- 323               	.L96:
+ 323               	.L106:
  324 00c0 9093 0000 		sts debug_config,r25
- 325               	.L23:
-  56:./tmk_core/common/bootmagic.c ****     eeconfig_update_debug(debug_config.raw);
- 326               		.loc 1 56 0
+ 325               	.L24:
+  62:tmk_core/common/bootmagic.c **** 
+ 326               		.loc 1 62 0
  327 00c4 8091 0000 		lds r24,debug_config
  328 00c8 0E94 0000 		call eeconfig_update_debug
  329               	.LVL36:
-  59:./tmk_core/common/bootmagic.c ****     keymap_config.raw = eeconfig_read_keymap();
- 330               		.loc 1 59 0
+  65:tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_CONTROL_CAPSLOCK)) {
+ 330               		.loc 1 65 0
  331 00cc 0E94 0000 		call eeconfig_read_keymap
  332               	.LVL37:
- 333 00d0 90E0      		ldi r25,0
- 334 00d2 9093 0000 		sts keymap_config+1,r25
- 335 00d6 8093 0000 		sts keymap_config,r24
-  60:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_CONTROL_CAPSLOCK)) {
- 336               		.loc 1 60 0
- 337 00da 80EE      		ldi r24,lo8(-32)
- 338 00dc 0E94 0000 		call bootmagic_scan_keycode
- 339               	.LVL38:
- 340 00e0 8823      		tst r24
- 341 00e2 01F0      		breq .L27
-  61:./tmk_core/common/bootmagic.c ****         keymap_config.swap_control_capslock = !keymap_config.swap_control_capslock;
- 342               		.loc 1 61 0
- 343 00e4 8091 0000 		lds r24,keymap_config
- 344 00e8 982F      		mov r25,r24
- 345 00ea 9095      		com r25
- 346 00ec 90FB      		bst r25,0
- 347 00ee 80F9      		bld r24,0
- 348 00f0 8093 0000 		sts keymap_config,r24
- 349               	.L27:
-  63:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_CAPSLOCK_TO_CONTROL)) {
- 350               		.loc 1 63 0
- 351 00f4 89E3      		ldi r24,lo8(57)
- 352 00f6 0E94 0000 		call bootmagic_scan_keycode
- 353               	.LVL39:
- 354 00fa 8823      		tst r24
- 355 00fc 01F0      		breq .L28
-  64:./tmk_core/common/bootmagic.c ****         keymap_config.capslock_to_control = !keymap_config.capslock_to_control;
- 356               		.loc 1 64 0
- 357 00fe 8091 0000 		lds r24,keymap_config
- 358 0102 81FB      		bst r24,1
- 359 0104 2227      		clr r18
- 360 0106 20F9      		bld r18,0
- 361 0108 91E0      		ldi r25,lo8(1)
- 362 010a 9227      		eor r25,r18
- 363 010c 90FB      		bst r25,0
- 364 010e 81F9      		bld r24,1
- 365 0110 8093 0000 		sts keymap_config,r24
- 366               	.L28:
-  66:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_LALT_LGUI)) {
- 367               		.loc 1 66 0
- 368 0114 82EE      		ldi r24,lo8(-30)
- 369 0116 0E94 0000 		call bootmagic_scan_keycode
- 370               	.LVL40:
- 371 011a 8823      		tst r24
- 372 011c 01F0      		breq .L29
-  67:./tmk_core/common/bootmagic.c ****         keymap_config.swap_lalt_lgui = !keymap_config.swap_lalt_lgui;
- 373               		.loc 1 67 0
- 374 011e 8091 0000 		lds r24,keymap_config
- 375 0122 82FB      		bst r24,2
- 376 0124 2227      		clr r18
- 377 0126 20F9      		bld r18,0
- 378 0128 91E0      		ldi r25,lo8(1)
- 379 012a 9227      		eor r25,r18
- 380 012c 90FB      		bst r25,0
- 381 012e 82F9      		bld r24,2
- 382 0130 8093 0000 		sts keymap_config,r24
- 383               	.L29:
-  69:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_RALT_RGUI)) {
- 384               		.loc 1 69 0
- 385 0134 86EE      		ldi r24,lo8(-26)
- 386 0136 0E94 0000 		call bootmagic_scan_keycode
- 387               	.LVL41:
- 388 013a 8823      		tst r24
- 389 013c 01F0      		breq .L30
-  70:./tmk_core/common/bootmagic.c ****         keymap_config.swap_ralt_rgui = !keymap_config.swap_ralt_rgui;
- 390               		.loc 1 70 0
- 391 013e 8091 0000 		lds r24,keymap_config
- 392 0142 83FB      		bst r24,3
- 393 0144 2227      		clr r18
- 394 0146 20F9      		bld r18,0
- 395 0148 91E0      		ldi r25,lo8(1)
- 396 014a 9227      		eor r25,r18
- 397 014c 90FB      		bst r25,0
- 398 014e 83F9      		bld r24,3
- 399 0150 8093 0000 		sts keymap_config,r24
- 400               	.L30:
-  72:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_NO_GUI)) {
- 401               		.loc 1 72 0
- 402 0154 83EE      		ldi r24,lo8(-29)
- 403 0156 0E94 0000 		call bootmagic_scan_keycode
- 404               	.LVL42:
- 405 015a 8823      		tst r24
- 406 015c 01F0      		breq .L31
-  73:./tmk_core/common/bootmagic.c ****         keymap_config.no_gui = !keymap_config.no_gui;
- 407               		.loc 1 73 0
- 408 015e 8091 0000 		lds r24,keymap_config
- 409 0162 84FB      		bst r24,4
- 410 0164 2227      		clr r18
- 411 0166 20F9      		bld r18,0
- 412 0168 91E0      		ldi r25,lo8(1)
- 413 016a 9227      		eor r25,r18
- 414 016c 90FB      		bst r25,0
- 415 016e 84F9      		bld r24,4
- 416 0170 8093 0000 		sts keymap_config,r24
- 417               	.L31:
-  75:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_GRAVE_ESC)) {
- 418               		.loc 1 75 0
- 419 0174 85E3      		ldi r24,lo8(53)
- 420 0176 0E94 0000 		call bootmagic_scan_keycode
- 421               	.LVL43:
- 422 017a 8823      		tst r24
- 423 017c 01F0      		breq .L32
-  76:./tmk_core/common/bootmagic.c ****         keymap_config.swap_grave_esc = !keymap_config.swap_grave_esc;
- 424               		.loc 1 76 0
- 425 017e 8091 0000 		lds r24,keymap_config
- 426 0182 85FB      		bst r24,5
- 427 0184 2227      		clr r18
- 428 0186 20F9      		bld r18,0
- 429 0188 91E0      		ldi r25,lo8(1)
- 430 018a 9227      		eor r25,r18
- 431 018c 90FB      		bst r25,0
- 432 018e 85F9      		bld r24,5
- 433 0190 8093 0000 		sts keymap_config,r24
- 434               	.L32:
-  78:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_SWAP_BACKSLASH_BACKSPACE)) {
- 435               		.loc 1 78 0
- 436 0194 81E3      		ldi r24,lo8(49)
- 437 0196 0E94 0000 		call bootmagic_scan_keycode
- 438               	.LVL44:
- 439 019a 8823      		tst r24
- 440 019c 01F0      		breq .L33
-  79:./tmk_core/common/bootmagic.c ****         keymap_config.swap_backslash_backspace = !keymap_config.swap_backslash_backspace;
- 441               		.loc 1 79 0
- 442 019e 8091 0000 		lds r24,keymap_config
- 443 01a2 86FB      		bst r24,6
- 444 01a4 2227      		clr r18
- 445 01a6 20F9      		bld r18,0
- 446 01a8 91E0      		ldi r25,lo8(1)
- 447 01aa 9227      		eor r25,r18
- 448 01ac 90FB      		bst r25,0
- 449 01ae 86F9      		bld r24,6
- 450 01b0 8093 0000 		sts keymap_config,r24
- 451               	.L33:
-  81:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_HOST_NKRO)) {
- 452               		.loc 1 81 0
- 453 01b4 81E1      		ldi r24,lo8(17)
- 454 01b6 0E94 0000 		call bootmagic_scan_keycode
- 455               	.LVL45:
- 456 01ba 8823      		tst r24
- 457 01bc 01F0      		breq .L34
-  82:./tmk_core/common/bootmagic.c ****         keymap_config.nkro = !keymap_config.nkro;
- 458               		.loc 1 82 0
- 459 01be 8091 0000 		lds r24,keymap_config
- 460 01c2 87FB      		bst r24,7
- 461 01c4 2227      		clr r18
- 462 01c6 20F9      		bld r18,0
- 463 01c8 91E0      		ldi r25,lo8(1)
- 464 01ca 9227      		eor r25,r18
- 465 01cc 90FB      		bst r25,0
- 466 01ce 87F9      		bld r24,7
- 467 01d0 8093 0000 		sts keymap_config,r24
- 468               	.L34:
-  84:./tmk_core/common/bootmagic.c ****     eeconfig_update_keymap(keymap_config.raw);
- 469               		.loc 1 84 0
- 470 01d4 8091 0000 		lds r24,keymap_config
- 471 01d8 0E94 0000 		call eeconfig_update_keymap
+ 333 00d0 9093 0000 		sts keymap_config+1,r25
+ 334 00d4 8093 0000 		sts keymap_config,r24
+  66:tmk_core/common/bootmagic.c ****         keymap_config.swap_control_capslock = !keymap_config.swap_control_capslock;
+ 335               		.loc 1 66 0
+ 336 00d8 80EE      		ldi r24,lo8(-32)
+ 337 00da 0E94 0000 		call bootmagic_scan_keycode
+ 338               	.LVL38:
+ 339 00de 8823      		tst r24
+ 340 00e0 01F0      		breq .L28
+  67:tmk_core/common/bootmagic.c ****     }
+ 341               		.loc 1 67 0
+ 342 00e2 8091 0000 		lds r24,keymap_config
+ 343 00e6 982F      		mov r25,r24
+ 344 00e8 9095      		com r25
+ 345 00ea 90FB      		bst r25,0
+ 346 00ec 80F9      		bld r24,0
+ 347 00ee 8093 0000 		sts keymap_config,r24
+ 348               	.L28:
+  69:tmk_core/common/bootmagic.c ****         keymap_config.capslock_to_control = !keymap_config.capslock_to_control;
+ 349               		.loc 1 69 0
+ 350 00f2 89E3      		ldi r24,lo8(57)
+ 351 00f4 0E94 0000 		call bootmagic_scan_keycode
+ 352               	.LVL39:
+ 353 00f8 8823      		tst r24
+ 354 00fa 01F0      		breq .L29
+  70:tmk_core/common/bootmagic.c ****     }
+ 355               		.loc 1 70 0
+ 356 00fc 8091 0000 		lds r24,keymap_config
+ 357 0100 81FB      		bst r24,1
+ 358 0102 2227      		clr r18
+ 359 0104 20F9      		bld r18,0
+ 360 0106 91E0      		ldi r25,lo8(1)
+ 361 0108 9227      		eor r25,r18
+ 362 010a 90FB      		bst r25,0
+ 363 010c 81F9      		bld r24,1
+ 364 010e 8093 0000 		sts keymap_config,r24
+ 365               	.L29:
+  72:tmk_core/common/bootmagic.c ****         keymap_config.swap_lalt_lgui = !keymap_config.swap_lalt_lgui;
+ 366               		.loc 1 72 0
+ 367 0112 82EE      		ldi r24,lo8(-30)
+ 368 0114 0E94 0000 		call bootmagic_scan_keycode
+ 369               	.LVL40:
+ 370 0118 8823      		tst r24
+ 371 011a 01F0      		breq .L30
+  73:tmk_core/common/bootmagic.c ****     }
+ 372               		.loc 1 73 0
+ 373 011c 8091 0000 		lds r24,keymap_config
+ 374 0120 82FB      		bst r24,2
+ 375 0122 2227      		clr r18
+ 376 0124 20F9      		bld r18,0
+ 377 0126 91E0      		ldi r25,lo8(1)
+ 378 0128 9227      		eor r25,r18
+ 379 012a 90FB      		bst r25,0
+ 380 012c 82F9      		bld r24,2
+ 381 012e 8093 0000 		sts keymap_config,r24
+ 382               	.L30:
+  75:tmk_core/common/bootmagic.c ****         keymap_config.swap_ralt_rgui = !keymap_config.swap_ralt_rgui;
+ 383               		.loc 1 75 0
+ 384 0132 86EE      		ldi r24,lo8(-26)
+ 385 0134 0E94 0000 		call bootmagic_scan_keycode
+ 386               	.LVL41:
+ 387 0138 8823      		tst r24
+ 388 013a 01F0      		breq .L31
+  76:tmk_core/common/bootmagic.c ****     }
+ 389               		.loc 1 76 0
+ 390 013c 8091 0000 		lds r24,keymap_config
+ 391 0140 83FB      		bst r24,3
+ 392 0142 2227      		clr r18
+ 393 0144 20F9      		bld r18,0
+ 394 0146 91E0      		ldi r25,lo8(1)
+ 395 0148 9227      		eor r25,r18
+ 396 014a 90FB      		bst r25,0
+ 397 014c 83F9      		bld r24,3
+ 398 014e 8093 0000 		sts keymap_config,r24
+ 399               	.L31:
+  78:tmk_core/common/bootmagic.c ****         keymap_config.no_gui = !keymap_config.no_gui;
+ 400               		.loc 1 78 0
+ 401 0152 83EE      		ldi r24,lo8(-29)
+ 402 0154 0E94 0000 		call bootmagic_scan_keycode
+ 403               	.LVL42:
+ 404 0158 8823      		tst r24
+ 405 015a 01F0      		breq .L32
+  79:tmk_core/common/bootmagic.c ****     }
+ 406               		.loc 1 79 0
+ 407 015c 8091 0000 		lds r24,keymap_config
+ 408 0160 84FB      		bst r24,4
+ 409 0162 2227      		clr r18
+ 410 0164 20F9      		bld r18,0
+ 411 0166 91E0      		ldi r25,lo8(1)
+ 412 0168 9227      		eor r25,r18
+ 413 016a 90FB      		bst r25,0
+ 414 016c 84F9      		bld r24,4
+ 415 016e 8093 0000 		sts keymap_config,r24
+ 416               	.L32:
+  81:tmk_core/common/bootmagic.c ****         keymap_config.swap_grave_esc = !keymap_config.swap_grave_esc;
+ 417               		.loc 1 81 0
+ 418 0172 85E3      		ldi r24,lo8(53)
+ 419 0174 0E94 0000 		call bootmagic_scan_keycode
+ 420               	.LVL43:
+ 421 0178 8823      		tst r24
+ 422 017a 01F0      		breq .L33
+  82:tmk_core/common/bootmagic.c ****     }
+ 423               		.loc 1 82 0
+ 424 017c 8091 0000 		lds r24,keymap_config
+ 425 0180 85FB      		bst r24,5
+ 426 0182 2227      		clr r18
+ 427 0184 20F9      		bld r18,0
+ 428 0186 91E0      		ldi r25,lo8(1)
+ 429 0188 9227      		eor r25,r18
+ 430 018a 90FB      		bst r25,0
+ 431 018c 85F9      		bld r24,5
+ 432 018e 8093 0000 		sts keymap_config,r24
+ 433               	.L33:
+  84:tmk_core/common/bootmagic.c ****         keymap_config.swap_backslash_backspace = !keymap_config.swap_backslash_backspace;
+ 434               		.loc 1 84 0
+ 435 0192 81E3      		ldi r24,lo8(49)
+ 436 0194 0E94 0000 		call bootmagic_scan_keycode
+ 437               	.LVL44:
+ 438 0198 8823      		tst r24
+ 439 019a 01F0      		breq .L34
+  85:tmk_core/common/bootmagic.c ****     }
+ 440               		.loc 1 85 0
+ 441 019c 8091 0000 		lds r24,keymap_config
+ 442 01a0 86FB      		bst r24,6
+ 443 01a2 2227      		clr r18
+ 444 01a4 20F9      		bld r18,0
+ 445 01a6 91E0      		ldi r25,lo8(1)
+ 446 01a8 9227      		eor r25,r18
+ 447 01aa 90FB      		bst r25,0
+ 448 01ac 86F9      		bld r24,6
+ 449 01ae 8093 0000 		sts keymap_config,r24
+ 450               	.L34:
+  87:tmk_core/common/bootmagic.c ****         keymap_config.nkro = !keymap_config.nkro;
+ 451               		.loc 1 87 0
+ 452 01b2 81E1      		ldi r24,lo8(17)
+ 453 01b4 0E94 0000 		call bootmagic_scan_keycode
+ 454               	.LVL45:
+ 455 01b8 8823      		tst r24
+ 456 01ba 01F0      		breq .L35
+  88:tmk_core/common/bootmagic.c ****     }
+ 457               		.loc 1 88 0
+ 458 01bc 8091 0000 		lds r24,keymap_config
+ 459 01c0 87FB      		bst r24,7
+ 460 01c2 2227      		clr r18
+ 461 01c4 20F9      		bld r18,0
+ 462 01c6 91E0      		ldi r25,lo8(1)
+ 463 01c8 9227      		eor r25,r18
+ 464 01ca 90FB      		bst r25,0
+ 465 01cc 87F9      		bld r24,7
+ 466 01ce 8093 0000 		sts keymap_config,r24
+ 467               	.L35:
+  90:tmk_core/common/bootmagic.c **** 
+ 468               		.loc 1 90 0
+ 469 01d2 8091 0000 		lds r24,keymap_config
+ 470 01d6 9091 0000 		lds r25,keymap_config+1
+ 471 01da 0E94 0000 		call eeconfig_update_keymap
  472               	.LVL46:
-  88:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_0)) { default_layer |= (1<<0); }
- 473               		.loc 1 88 0
- 474 01dc 87E2      		ldi r24,lo8(39)
- 475 01de 0E94 0000 		call bootmagic_scan_keycode
+  94:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 0);
+ 473               		.loc 1 94 0
+ 474 01de 87E2      		ldi r24,lo8(39)
+ 475 01e0 0E94 0000 		call bootmagic_scan_keycode
  476               	.LVL47:
- 477 01e2 C82F      		mov r28,r24
+ 477 01e4 C82F      		mov r28,r24
  478               	.LVL48:
-  89:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_1)) { default_layer |= (1<<1); }
- 479               		.loc 1 89 0
- 480 01e4 8EE1      		ldi r24,lo8(30)
+  97:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 1);
+ 479               		.loc 1 97 0
+ 480 01e6 8EE1      		ldi r24,lo8(30)
  481               	.LVL49:
- 482 01e6 0E94 0000 		call bootmagic_scan_keycode
+ 482 01e8 0E94 0000 		call bootmagic_scan_keycode
  483               	.LVL50:
- 484 01ea 8111      		cpse r24,__zero_reg__
-  89:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_1)) { default_layer |= (1<<1); }
- 485               		.loc 1 89 0 is_stmt 0 discriminator 1
- 486 01ec C260      		ori r28,lo8(2)
+ 484 01ec 8111      		cpse r24,__zero_reg__
+  98:tmk_core/common/bootmagic.c ****     }
+ 485               		.loc 1 98 0
+ 486 01ee C260      		ori r28,lo8(2)
  487               	.LVL51:
- 488               	.L35:
-  90:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_2)) { default_layer |= (1<<2); }
- 489               		.loc 1 90 0 is_stmt 1
- 490 01ee 8FE1      		ldi r24,lo8(31)
- 491 01f0 0E94 0000 		call bootmagic_scan_keycode
+ 488               	.L36:
+ 100:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 2);
+ 489               		.loc 1 100 0
+ 490 01f0 8FE1      		ldi r24,lo8(31)
+ 491 01f2 0E94 0000 		call bootmagic_scan_keycode
  492               	.LVL52:
- 493 01f4 8111      		cpse r24,__zero_reg__
-  90:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_2)) { default_layer |= (1<<2); }
- 494               		.loc 1 90 0 is_stmt 0 discriminator 1
- 495 01f6 C460      		ori r28,lo8(4)
+ 493 01f6 8111      		cpse r24,__zero_reg__
+ 101:tmk_core/common/bootmagic.c ****     }
+ 494               		.loc 1 101 0
+ 495 01f8 C460      		ori r28,lo8(4)
  496               	.LVL53:
- 497               	.L36:
-  91:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_3)) { default_layer |= (1<<3); }
- 498               		.loc 1 91 0 is_stmt 1
- 499 01f8 80E2      		ldi r24,lo8(32)
- 500 01fa 0E94 0000 		call bootmagic_scan_keycode
+ 497               	.L37:
+ 103:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 3);
+ 498               		.loc 1 103 0
+ 499 01fa 80E2      		ldi r24,lo8(32)
+ 500 01fc 0E94 0000 		call bootmagic_scan_keycode
  501               	.LVL54:
- 502 01fe 8111      		cpse r24,__zero_reg__
-  91:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_3)) { default_layer |= (1<<3); }
- 503               		.loc 1 91 0 is_stmt 0 discriminator 1
- 504 0200 C860      		ori r28,lo8(8)
+ 502 0200 8111      		cpse r24,__zero_reg__
+ 104:tmk_core/common/bootmagic.c ****     }
+ 503               		.loc 1 104 0
+ 504 0202 C860      		ori r28,lo8(8)
  505               	.LVL55:
- 506               	.L37:
-  92:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_4)) { default_layer |= (1<<4); }
- 507               		.loc 1 92 0 is_stmt 1
- 508 0202 81E2      		ldi r24,lo8(33)
- 509 0204 0E94 0000 		call bootmagic_scan_keycode
+ 506               	.L38:
+ 106:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 4);
+ 507               		.loc 1 106 0
+ 508 0204 81E2      		ldi r24,lo8(33)
+ 509 0206 0E94 0000 		call bootmagic_scan_keycode
  510               	.LVL56:
- 511 0208 8111      		cpse r24,__zero_reg__
-  92:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_4)) { default_layer |= (1<<4); }
- 512               		.loc 1 92 0 is_stmt 0 discriminator 1
- 513 020a C061      		ori r28,lo8(16)
+ 511 020a 8111      		cpse r24,__zero_reg__
+ 107:tmk_core/common/bootmagic.c ****     }
+ 512               		.loc 1 107 0
+ 513 020c C061      		ori r28,lo8(16)
  514               	.LVL57:
- 515               	.L38:
-  93:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_5)) { default_layer |= (1<<5); }
- 516               		.loc 1 93 0 is_stmt 1
- 517 020c 82E2      		ldi r24,lo8(34)
- 518 020e 0E94 0000 		call bootmagic_scan_keycode
+ 515               	.L39:
+ 109:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 5);
+ 516               		.loc 1 109 0
+ 517 020e 82E2      		ldi r24,lo8(34)
+ 518 0210 0E94 0000 		call bootmagic_scan_keycode
  519               	.LVL58:
- 520 0212 8111      		cpse r24,__zero_reg__
-  93:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_5)) { default_layer |= (1<<5); }
- 521               		.loc 1 93 0 is_stmt 0 discriminator 1
- 522 0214 C062      		ori r28,lo8(32)
+ 520 0214 8111      		cpse r24,__zero_reg__
+ 110:tmk_core/common/bootmagic.c ****     }
+ 521               		.loc 1 110 0
+ 522 0216 C062      		ori r28,lo8(32)
  523               	.LVL59:
- 524               	.L39:
-  94:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_6)) { default_layer |= (1<<6); }
- 525               		.loc 1 94 0 is_stmt 1
- 526 0216 83E2      		ldi r24,lo8(35)
- 527 0218 0E94 0000 		call bootmagic_scan_keycode
+ 524               	.L40:
+ 112:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 6);
+ 525               		.loc 1 112 0
+ 526 0218 83E2      		ldi r24,lo8(35)
+ 527 021a 0E94 0000 		call bootmagic_scan_keycode
  528               	.LVL60:
- 529 021c 8111      		cpse r24,__zero_reg__
-  94:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_6)) { default_layer |= (1<<6); }
- 530               		.loc 1 94 0 is_stmt 0 discriminator 1
- 531 021e C064      		ori r28,lo8(64)
+ 529 021e 8111      		cpse r24,__zero_reg__
+ 113:tmk_core/common/bootmagic.c ****     }
+ 530               		.loc 1 113 0
+ 531 0220 C064      		ori r28,lo8(64)
  532               	.LVL61:
- 533               	.L40:
-  95:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_7)) { default_layer |= (1<<7); }
- 534               		.loc 1 95 0 is_stmt 1
- 535 0220 84E2      		ldi r24,lo8(36)
- 536 0222 0E94 0000 		call bootmagic_scan_keycode
+ 533               	.L41:
+ 115:tmk_core/common/bootmagic.c ****         default_layer |= (1 << 7);
+ 534               		.loc 1 115 0
+ 535 0222 84E2      		ldi r24,lo8(36)
+ 536 0224 0E94 0000 		call bootmagic_scan_keycode
  537               	.LVL62:
- 538 0226 8823      		tst r24
- 539 0228 01F0      		breq .L41
-  95:./tmk_core/common/bootmagic.c ****     if (bootmagic_scan_keycode(BOOTMAGIC_KEY_DEFAULT_LAYER_7)) { default_layer |= (1<<7); }
- 540               		.loc 1 95 0 is_stmt 0 discriminator 1
- 541 022a C068      		ori r28,lo8(-128)
+ 538 0228 8823      		tst r24
+ 539 022a 01F0      		breq .L42
+ 116:tmk_core/common/bootmagic.c ****     }
+ 540               		.loc 1 116 0
+ 541 022c C068      		ori r28,lo8(-128)
  542               	.LVL63:
- 543 022c 00C0      		rjmp .L42
- 544               	.L41:
-  96:./tmk_core/common/bootmagic.c ****     if (default_layer) {
- 545               		.loc 1 96 0 is_stmt 1
- 546 022e CC23      		tst r28
- 547 0230 01F0      		breq .L43
- 548               	.L42:
-  97:./tmk_core/common/bootmagic.c ****         eeconfig_update_default_layer(default_layer);
- 549               		.loc 1 97 0
- 550 0232 8C2F      		mov r24,r28
- 551 0234 0E94 0000 		call eeconfig_update_default_layer
+ 543 022e 00C0      		rjmp .L43
+ 544               	.L42:
+ 118:tmk_core/common/bootmagic.c ****         eeconfig_update_default_layer(default_layer);
+ 545               		.loc 1 118 0
+ 546 0230 CC23      		tst r28
+ 547 0232 01F0      		breq .L44
+ 548               	.L43:
+ 119:tmk_core/common/bootmagic.c ****         default_layer_set((layer_state_t)default_layer);
+ 549               		.loc 1 119 0
+ 550 0234 8C2F      		mov r24,r28
+ 551 0236 0E94 0000 		call eeconfig_update_default_layer
  552               	.LVL64:
-  98:./tmk_core/common/bootmagic.c ****         default_layer_set((uint32_t)default_layer);
- 553               		.loc 1 98 0
- 554 0238 6C2F      		mov r22,r28
- 555 023a 00C0      		rjmp .L97
- 556               	.L43:
- 100:./tmk_core/common/bootmagic.c ****         default_layer = eeconfig_read_default_layer();
- 557               		.loc 1 100 0
- 558 023c 0E94 0000 		call eeconfig_read_default_layer
+ 120:tmk_core/common/bootmagic.c ****     } else {
+ 553               		.loc 1 120 0
+ 554 023a 6C2F      		mov r22,r28
+ 555 023c 00C0      		rjmp .L107
+ 556               	.L44:
+ 122:tmk_core/common/bootmagic.c ****         default_layer_set((layer_state_t)default_layer);
+ 557               		.loc 1 122 0
+ 558 023e 0E94 0000 		call eeconfig_read_default_layer
  559               	.LVL65:
- 101:./tmk_core/common/bootmagic.c ****         default_layer_set((uint32_t)default_layer);
- 560               		.loc 1 101 0
- 561 0240 682F      		mov r22,r24
+ 123:tmk_core/common/bootmagic.c ****     }
+ 560               		.loc 1 123 0
+ 561 0242 682F      		mov r22,r24
  562               	.LVL66:
- 563               	.L97:
- 564 0242 70E0      		ldi r23,0
- 565 0244 80E0      		ldi r24,0
- 566 0246 90E0      		ldi r25,0
- 567               	/* epilogue start */
- 103:./tmk_core/common/bootmagic.c **** }
- 568               		.loc 1 103 0
- 569 0248 CF91      		pop r28
- 101:./tmk_core/common/bootmagic.c ****         default_layer_set((uint32_t)default_layer);
- 570               		.loc 1 101 0
- 571 024a 0C94 0000 		jmp default_layer_set
- 572               	.LVL67:
- 573               	.L16:
- 574               	/* epilogue start */
- 103:./tmk_core/common/bootmagic.c **** }
- 575               		.loc 1 103 0
- 576 024e CF91      		pop r28
- 577               	.LVL68:
- 578 0250 0895      		ret
- 579               		.cfi_endproc
- 580               	.LFE103:
- 582               		.comm	keymap_config,2,1
- 583               		.text
- 584               	.Letext0:
- 585               		.file 3 "/usr/lib/avr/include/stdint.h"
- 586               		.file 4 "./tmk_core/common/matrix.h"
- 587               		.file 5 "./tmk_core/common/debug.h"
- 588               		.file 6 "./tmk_core/common/keyboard.h"
- 589               		.file 7 "./quantum/keycode_config.h"
- 590               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
- 591               		.file 9 "./quantum/keymap.h"
- 592               		.file 10 "./tmk_core/common/eeconfig.h"
- 593               		.file 11 "./tmk_core/common/bootloader.h"
- 594               		.file 12 "./tmk_core/common/action_layer.h"
- 595               		.file 13 "./tmk_core/common/keycode.h"
+ 563               	.L107:
+ 564 0244 70E0      		ldi r23,0
+ 565 0246 80E0      		ldi r24,0
+ 566 0248 90E0      		ldi r25,0
+ 567 024a 0E94 0000 		call default_layer_set
+ 568               	.LVL67:
+ 126:tmk_core/common/bootmagic.c **** 
+ 569               		.loc 1 126 0
+ 570 024e 6091 0000 		lds r22,layer_state
+ 571 0252 7091 0000 		lds r23,layer_state+1
+ 572 0256 8091 0000 		lds r24,layer_state+2
+ 573 025a 9091 0000 		lds r25,layer_state+3
+ 574 025e 0E94 0000 		call layer_state_set_kb
+ 575               	.LVL68:
+ 129:tmk_core/common/bootmagic.c ****         eeconfig_update_handedness(true);
+ 576               		.loc 1 129 0
+ 577 0262 8FE0      		ldi r24,lo8(15)
+ 578 0264 0E94 0000 		call bootmagic_scan_keycode
+ 579               	.LVL69:
+ 580 0268 8823      		tst r24
+ 581 026a 01F0      		breq .L46
+ 130:tmk_core/common/bootmagic.c ****     }
+ 582               		.loc 1 130 0
+ 583 026c 81E0      		ldi r24,lo8(1)
+ 584 026e 0E94 0000 		call eeconfig_update_handedness
+ 585               	.LVL70:
+ 586               	.L46:
+ 132:tmk_core/common/bootmagic.c ****         eeconfig_update_handedness(false);
+ 587               		.loc 1 132 0
+ 588 0272 85E1      		ldi r24,lo8(21)
+ 589 0274 0E94 0000 		call bootmagic_scan_keycode
+ 590               	.LVL71:
+ 591 0278 8823      		tst r24
+ 592 027a 01F0      		breq .L16
+ 133:tmk_core/common/bootmagic.c ****     }
+ 593               		.loc 1 133 0
+ 594 027c 80E0      		ldi r24,0
+ 595               	/* epilogue start */
+ 135:tmk_core/common/bootmagic.c **** 
+ 596               		.loc 1 135 0
+ 597 027e CF91      		pop r28
+ 133:tmk_core/common/bootmagic.c ****     }
+ 598               		.loc 1 133 0
+ 599 0280 0C94 0000 		jmp eeconfig_update_handedness
+ 600               	.LVL72:
+ 601               	.L16:
+ 602               	/* epilogue start */
+ 135:tmk_core/common/bootmagic.c **** 
+ 603               		.loc 1 135 0
+ 604 0284 CF91      		pop r28
+ 605 0286 0895      		ret
+ 606               		.cfi_endproc
+ 607               	.LFE105:
+ 609               		.comm	keymap_config,2,1
+ 610               		.text
+ 611               	.Letext0:
+ 612               		.file 3 "/usr/lib/avr/include/stdint.h"
+ 613               		.file 4 "tmk_core/common/matrix.h"
+ 614               		.file 5 "tmk_core/common/debug.h"
+ 615               		.file 6 "tmk_core/common/keyboard.h"
+ 616               		.file 7 "quantum/keycode_config.h"
+ 617               		.file 8 "tmk_core/common/action_layer.h"
+ 618               		.file 9 "lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
+ 619               		.file 10 "quantum/keymap.h"
+ 620               		.file 11 "tmk_core/common/eeconfig.h"
+ 621               		.file 12 "tmk_core/common/bootloader.h"
+ 622               		.file 13 "tmk_core/common/keycode.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bootmagic.c
-     /tmp/ccajeQvE.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccajeQvE.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccajeQvE.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccajeQvE.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccajeQvE.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccajeQvE.s:12     .text.scan_keycode:0000000000000000 scan_keycode
-     /tmp/ccajeQvE.s:140    .text.bootmagic_scan_keycode:0000000000000000 bootmagic_scan_keycode
-     /tmp/ccajeQvE.s:183    .text.bootmagic:0000000000000000 bootmagic
+     /tmp/ccpIIUun.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccpIIUun.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccpIIUun.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccpIIUun.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccpIIUun.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccpIIUun.s:12     .text.scan_keycode:0000000000000000 scan_keycode
+     /tmp/ccpIIUun.s:140    .text.bootmagic_scan_keycode:0000000000000000 bootmagic_scan_keycode
+     /tmp/ccpIIUun.s:183    .text.bootmagic:0000000000000000 bootmagic
                             *COM*:0000000000000002 keymap_config
 
 UNDEFINED SYMBOLS
@@ -993,4 +1063,7 @@ eeconfig_update_keymap
 eeconfig_update_default_layer
 eeconfig_read_default_layer
 default_layer_set
+layer_state
+layer_state_set_kb
+eeconfig_update_handedness
 __do_clear_bss

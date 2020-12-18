@@ -10,7 +10,7 @@
   10               		.section	.text.action_get_macro,"ax",@progbits
   11               	.global	action_get_macro
   13               	action_get_macro:
-  14               	.LFB107:
+  14               	.LFB117:
   15               		.file 1 "keyboards/kb/keymaps/default/keymap.c"
    1:keyboards/kb/keymaps/default/keymap.c **** #include "kb.h"
    2:keyboards/kb/keymaps/default/keymap.c **** 
@@ -19,14 +19,14 @@
    5:keyboards/kb/keymaps/default/keymap.c **** 	KEYMAP(
    6:keyboards/kb/keymaps/default/keymap.c **** 		KC_0, KC_1, KC_2, KC_3, 
    7:keyboards/kb/keymaps/default/keymap.c **** 		KC_4, KC_5, KC_6, KC_7, 
-   8:keyboards/kb/keymaps/default/keymap.c **** 		KC_8, KC_9, KC_A, KC_D, 
-   9:keyboards/kb/keymaps/default/keymap.c **** 		KC_C, KC_D, KC_E, KC_F),
+   8:keyboards/kb/keymaps/default/keymap.c **** 		KC_8, KC_9, KC_A, KC_B, 
+   9:keyboards/kb/keymaps/default/keymap.c **** 		KC_C, KC_D, KC_E, MO(1)),
   10:keyboards/kb/keymaps/default/keymap.c **** 
   11:keyboards/kb/keymaps/default/keymap.c **** 	KEYMAP(
-  12:keyboards/kb/keymaps/default/keymap.c **** 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-  13:keyboards/kb/keymaps/default/keymap.c **** 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-  14:keyboards/kb/keymaps/default/keymap.c **** 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-  15:keyboards/kb/keymaps/default/keymap.c **** 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+  12:keyboards/kb/keymaps/default/keymap.c **** 		RESET, KC_TRNS, KC_TRNS, KC_TRNS, 
+  13:keyboards/kb/keymaps/default/keymap.c **** 		BL_INC, KC_TRNS, KC_TRNS, KC_TRNS, 
+  14:keyboards/kb/keymaps/default/keymap.c **** 		BL_DEC, BL_TOGG, KC_TRNS, KC_TRNS, 
+  15:keyboards/kb/keymaps/default/keymap.c **** 		KC_TRNS, KC_TRNS, KC_TRNS, MO(0)),
   16:keyboards/kb/keymaps/default/keymap.c **** 
   17:keyboards/kb/keymaps/default/keymap.c **** 	KEYMAP(
   18:keyboards/kb/keymaps/default/keymap.c **** 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
@@ -122,7 +122,7 @@
   20               	/* frame size = 0 */
   21               	/* stack size = 0 */
   22               	.L__stack_usage = 0
- 104:keyboards/kb/keymaps/default/keymap.c **** 	keyevent_t event = record->event;
+ 104:keyboards/kb/keymaps/default/keymap.c **** 	//keyevent_t event = record->event;
  105:keyboards/kb/keymaps/default/keymap.c **** 
  106:keyboards/kb/keymaps/default/keymap.c **** 	switch (id) {
  107:keyboards/kb/keymaps/default/keymap.c **** 
@@ -135,11 +135,11 @@
   26               	.LVL1:
   27 0004 0895      		ret
   28               		.cfi_endproc
-  29               	.LFE107:
+  29               	.LFE117:
   31               		.section	.text.matrix_init_user,"ax",@progbits
   32               	.global	matrix_init_user
   34               	matrix_init_user:
-  35               	.LFB113:
+  35               	.LFB131:
   36               		.cfi_startproc
   37               	/* prologue: function */
   38               	/* frame size = 0 */
@@ -147,11 +147,11 @@
   40               	.L__stack_usage = 0
   41 0000 0895      		ret
   42               		.cfi_endproc
-  43               	.LFE113:
+  43               	.LFE131:
   45               		.section	.text.matrix_scan_user,"ax",@progbits
   46               	.global	matrix_scan_user
   48               	matrix_scan_user:
-  49               	.LFB109:
+  49               	.LFB119:
  111:keyboards/kb/keymaps/default/keymap.c **** 
  112:keyboards/kb/keymaps/default/keymap.c **** void matrix_init_user(void) {
  113:keyboards/kb/keymaps/default/keymap.c **** }
@@ -165,11 +165,11 @@
   55               	.L__stack_usage = 0
   56 0000 0895      		ret
   57               		.cfi_endproc
-  58               	.LFE109:
+  58               	.LFE119:
   60               		.section	.text.process_record_user,"ax",@progbits
   61               	.global	process_record_user
   63               	process_record_user:
-  64               	.LFB110:
+  64               	.LFB120:
  116:keyboards/kb/keymaps/default/keymap.c **** }
  117:keyboards/kb/keymaps/default/keymap.c **** 
  118:keyboards/kb/keymaps/default/keymap.c **** bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -187,11 +187,11 @@
   74               	.LVL3:
   75 0002 0895      		ret
   76               		.cfi_endproc
-  77               	.LFE110:
+  77               	.LFE120:
   79               		.section	.text.led_set_user,"ax",@progbits
   80               	.global	led_set_user
   82               	led_set_user:
-  83               	.LFB111:
+  83               	.LFB121:
  121:keyboards/kb/keymaps/default/keymap.c **** 
  122:keyboards/kb/keymaps/default/keymap.c **** void led_set_user(uint8_t usb_led) {
   84               		.loc 1 122 0
@@ -203,286 +203,1309 @@
   90               	.L__stack_usage = 0
   91 0000 0895      		ret
   92               		.cfi_endproc
-  93               	.LFE111:
-  95               	.global	keymaps
-  96               		.section	.progmem.data.keymaps,"a",@progbits
-  99               	keymaps:
- 100 0000 2700      		.word	39
- 101 0002 1E00      		.word	30
- 102 0004 1F00      		.word	31
- 103 0006 2000      		.word	32
- 104 0008 2100      		.word	33
- 105 000a 2200      		.word	34
- 106 000c 2300      		.word	35
- 107 000e 2400      		.word	36
- 108 0010 2500      		.word	37
- 109 0012 2600      		.word	38
- 110 0014 0400      		.word	4
- 111 0016 0700      		.word	7
- 112 0018 0600      		.word	6
- 113 001a 0700      		.word	7
- 114 001c 0800      		.word	8
- 115 001e 0900      		.word	9
- 116 0020 0100      		.word	1
- 117 0022 0100      		.word	1
- 118 0024 0100      		.word	1
- 119 0026 0100      		.word	1
- 120 0028 0100      		.word	1
- 121 002a 0100      		.word	1
- 122 002c 0100      		.word	1
- 123 002e 0100      		.word	1
- 124 0030 0100      		.word	1
- 125 0032 0100      		.word	1
- 126 0034 0100      		.word	1
- 127 0036 0100      		.word	1
- 128 0038 0100      		.word	1
- 129 003a 0100      		.word	1
- 130 003c 0100      		.word	1
- 131 003e 0100      		.word	1
- 132 0040 0100      		.word	1
- 133 0042 0100      		.word	1
- 134 0044 0100      		.word	1
- 135 0046 0100      		.word	1
- 136 0048 0100      		.word	1
- 137 004a 0100      		.word	1
- 138 004c 0100      		.word	1
- 139 004e 0100      		.word	1
- 140 0050 0100      		.word	1
- 141 0052 0100      		.word	1
- 142 0054 0100      		.word	1
- 143 0056 0100      		.word	1
- 144 0058 0100      		.word	1
- 145 005a 0100      		.word	1
- 146 005c 0100      		.word	1
- 147 005e 0100      		.word	1
- 148 0060 0100      		.word	1
- 149 0062 0100      		.word	1
- 150 0064 0100      		.word	1
- 151 0066 0100      		.word	1
- 152 0068 0100      		.word	1
- 153 006a 0100      		.word	1
- 154 006c 0100      		.word	1
- 155 006e 0100      		.word	1
- 156 0070 0100      		.word	1
- 157 0072 0100      		.word	1
- 158 0074 0100      		.word	1
- 159 0076 0100      		.word	1
- 160 0078 0100      		.word	1
- 161 007a 0100      		.word	1
- 162 007c 0100      		.word	1
- 163 007e 0100      		.word	1
- 164 0080 0100      		.word	1
- 165 0082 0100      		.word	1
- 166 0084 0100      		.word	1
- 167 0086 0100      		.word	1
- 168 0088 0100      		.word	1
- 169 008a 0100      		.word	1
- 170 008c 0100      		.word	1
- 171 008e 0100      		.word	1
- 172 0090 0100      		.word	1
- 173 0092 0100      		.word	1
- 174 0094 0100      		.word	1
- 175 0096 0100      		.word	1
- 176 0098 0100      		.word	1
- 177 009a 0100      		.word	1
- 178 009c 0100      		.word	1
- 179 009e 0100      		.word	1
- 180 00a0 0100      		.word	1
- 181 00a2 0100      		.word	1
- 182 00a4 0100      		.word	1
- 183 00a6 0100      		.word	1
- 184 00a8 0100      		.word	1
- 185 00aa 0100      		.word	1
- 186 00ac 0100      		.word	1
- 187 00ae 0100      		.word	1
- 188 00b0 0100      		.word	1
- 189 00b2 0100      		.word	1
- 190 00b4 0100      		.word	1
- 191 00b6 0100      		.word	1
- 192 00b8 0100      		.word	1
- 193 00ba 0100      		.word	1
- 194 00bc 0100      		.word	1
- 195 00be 0100      		.word	1
- 196 00c0 0100      		.word	1
- 197 00c2 0100      		.word	1
- 198 00c4 0100      		.word	1
- 199 00c6 0100      		.word	1
- 200 00c8 0100      		.word	1
- 201 00ca 0100      		.word	1
- 202 00cc 0100      		.word	1
- 203 00ce 0100      		.word	1
- 204 00d0 0100      		.word	1
- 205 00d2 0100      		.word	1
- 206 00d4 0100      		.word	1
- 207 00d6 0100      		.word	1
- 208 00d8 0100      		.word	1
- 209 00da 0100      		.word	1
- 210 00dc 0100      		.word	1
- 211 00de 0100      		.word	1
- 212 00e0 0100      		.word	1
- 213 00e2 0100      		.word	1
- 214 00e4 0100      		.word	1
- 215 00e6 0100      		.word	1
- 216 00e8 0100      		.word	1
- 217 00ea 0100      		.word	1
- 218 00ec 0100      		.word	1
- 219 00ee 0100      		.word	1
- 220 00f0 0100      		.word	1
- 221 00f2 0100      		.word	1
- 222 00f4 0100      		.word	1
- 223 00f6 0100      		.word	1
- 224 00f8 0100      		.word	1
- 225 00fa 0100      		.word	1
- 226 00fc 0100      		.word	1
- 227 00fe 0100      		.word	1
- 228 0100 0100      		.word	1
- 229 0102 0100      		.word	1
- 230 0104 0100      		.word	1
- 231 0106 0100      		.word	1
- 232 0108 0100      		.word	1
- 233 010a 0100      		.word	1
- 234 010c 0100      		.word	1
- 235 010e 0100      		.word	1
- 236 0110 0100      		.word	1
- 237 0112 0100      		.word	1
- 238 0114 0100      		.word	1
- 239 0116 0100      		.word	1
- 240 0118 0100      		.word	1
- 241 011a 0100      		.word	1
- 242 011c 0100      		.word	1
- 243 011e 0100      		.word	1
- 244 0120 0100      		.word	1
- 245 0122 0100      		.word	1
- 246 0124 0100      		.word	1
- 247 0126 0100      		.word	1
- 248 0128 0100      		.word	1
- 249 012a 0100      		.word	1
- 250 012c 0100      		.word	1
- 251 012e 0100      		.word	1
- 252 0130 0100      		.word	1
- 253 0132 0100      		.word	1
- 254 0134 0100      		.word	1
- 255 0136 0100      		.word	1
- 256 0138 0100      		.word	1
- 257 013a 0100      		.word	1
- 258 013c 0100      		.word	1
- 259 013e 0100      		.word	1
- 260 0140 0100      		.word	1
- 261 0142 0100      		.word	1
- 262 0144 0100      		.word	1
- 263 0146 0100      		.word	1
- 264 0148 0100      		.word	1
- 265 014a 0100      		.word	1
- 266 014c 0100      		.word	1
- 267 014e 0100      		.word	1
- 268 0150 0100      		.word	1
- 269 0152 0100      		.word	1
- 270 0154 0100      		.word	1
- 271 0156 0100      		.word	1
- 272 0158 0100      		.word	1
- 273 015a 0100      		.word	1
- 274 015c 0100      		.word	1
- 275 015e 0100      		.word	1
- 276 0160 0100      		.word	1
- 277 0162 0100      		.word	1
- 278 0164 0100      		.word	1
- 279 0166 0100      		.word	1
- 280 0168 0100      		.word	1
- 281 016a 0100      		.word	1
- 282 016c 0100      		.word	1
- 283 016e 0100      		.word	1
- 284 0170 0100      		.word	1
- 285 0172 0100      		.word	1
- 286 0174 0100      		.word	1
- 287 0176 0100      		.word	1
- 288 0178 0100      		.word	1
- 289 017a 0100      		.word	1
- 290 017c 0100      		.word	1
- 291 017e 0100      		.word	1
- 292 0180 0100      		.word	1
- 293 0182 0100      		.word	1
- 294 0184 0100      		.word	1
- 295 0186 0100      		.word	1
- 296 0188 0100      		.word	1
- 297 018a 0100      		.word	1
- 298 018c 0100      		.word	1
- 299 018e 0100      		.word	1
- 300 0190 0100      		.word	1
- 301 0192 0100      		.word	1
- 302 0194 0100      		.word	1
- 303 0196 0100      		.word	1
- 304 0198 0100      		.word	1
- 305 019a 0100      		.word	1
- 306 019c 0100      		.word	1
- 307 019e 0100      		.word	1
- 308 01a0 0100      		.word	1
- 309 01a2 0100      		.word	1
- 310 01a4 0100      		.word	1
- 311 01a6 0100      		.word	1
- 312 01a8 0100      		.word	1
- 313 01aa 0100      		.word	1
- 314 01ac 0100      		.word	1
- 315 01ae 0100      		.word	1
- 316 01b0 0100      		.word	1
- 317 01b2 0100      		.word	1
- 318 01b4 0100      		.word	1
- 319 01b6 0100      		.word	1
- 320 01b8 0100      		.word	1
- 321 01ba 0100      		.word	1
- 322 01bc 0100      		.word	1
- 323 01be 0100      		.word	1
- 324 01c0 0100      		.word	1
- 325 01c2 0100      		.word	1
- 326 01c4 0100      		.word	1
- 327 01c6 0100      		.word	1
- 328 01c8 0100      		.word	1
- 329 01ca 0100      		.word	1
- 330 01cc 0100      		.word	1
- 331 01ce 0100      		.word	1
- 332 01d0 0100      		.word	1
- 333 01d2 0100      		.word	1
- 334 01d4 0100      		.word	1
- 335 01d6 0100      		.word	1
- 336 01d8 0100      		.word	1
- 337 01da 0100      		.word	1
- 338 01dc 0100      		.word	1
- 339 01de 0100      		.word	1
- 340 01e0 0100      		.word	1
- 341 01e2 0100      		.word	1
- 342 01e4 0100      		.word	1
- 343 01e6 0100      		.word	1
- 344 01e8 0100      		.word	1
- 345 01ea 0100      		.word	1
- 346 01ec 0100      		.word	1
- 347 01ee 0100      		.word	1
- 348 01f0 0100      		.word	1
- 349 01f2 0100      		.word	1
- 350 01f4 0100      		.word	1
- 351 01f6 0100      		.word	1
- 352 01f8 0100      		.word	1
- 353 01fa 0100      		.word	1
- 354 01fc 0100      		.word	1
- 355 01fe 0100      		.word	1
- 356               		.text
- 357               	.Letext0:
- 358               		.file 2 "/usr/lib/avr/include/stdint.h"
- 359               		.file 3 "./tmk_core/common/keyboard.h"
- 360               		.file 4 "./tmk_core/common/action_macro.h"
- 361               		.file 5 "./tmk_core/common/action.h"
- 362               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
- 363               		.file 7 "./tmk_core/common/keycode.h"
+  93               	.LFE121:
+  95               		.section	.text.backlight_init_ports,"ax",@progbits
+  96               	.global	backlight_init_ports
+  98               	backlight_init_ports:
+  99               	.LFB122:
+ 123:keyboards/kb/keymaps/default/keymap.c **** 
+ 124:keyboards/kb/keymaps/default/keymap.c **** 	if (usb_led & (1 << USB_LED_NUM_LOCK)) {
+ 125:keyboards/kb/keymaps/default/keymap.c **** 		
+ 126:keyboards/kb/keymaps/default/keymap.c **** 	} else {
+ 127:keyboards/kb/keymaps/default/keymap.c **** 		
+ 128:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 129:keyboards/kb/keymaps/default/keymap.c **** 
+ 130:keyboards/kb/keymaps/default/keymap.c **** 	if (usb_led & (1 << USB_LED_CAPS_LOCK)) {
+ 131:keyboards/kb/keymaps/default/keymap.c **** 		
+ 132:keyboards/kb/keymaps/default/keymap.c **** 	} else {
+ 133:keyboards/kb/keymaps/default/keymap.c **** 		
+ 134:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 135:keyboards/kb/keymaps/default/keymap.c **** 
+ 136:keyboards/kb/keymaps/default/keymap.c **** 	if (usb_led & (1 << USB_LED_SCROLL_LOCK)) {
+ 137:keyboards/kb/keymaps/default/keymap.c **** 		
+ 138:keyboards/kb/keymaps/default/keymap.c **** 	} else {
+ 139:keyboards/kb/keymaps/default/keymap.c **** 		
+ 140:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 141:keyboards/kb/keymaps/default/keymap.c **** 
+ 142:keyboards/kb/keymaps/default/keymap.c **** 	if (usb_led & (1 << USB_LED_COMPOSE)) {
+ 143:keyboards/kb/keymaps/default/keymap.c **** 		
+ 144:keyboards/kb/keymaps/default/keymap.c **** 	} else {
+ 145:keyboards/kb/keymaps/default/keymap.c **** 		
+ 146:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 147:keyboards/kb/keymaps/default/keymap.c **** 
+ 148:keyboards/kb/keymaps/default/keymap.c **** 	if (usb_led & (1 << USB_LED_KANA)) {
+ 149:keyboards/kb/keymaps/default/keymap.c **** 		
+ 150:keyboards/kb/keymaps/default/keymap.c **** 	} else {
+ 151:keyboards/kb/keymaps/default/keymap.c **** 		
+ 152:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 153:keyboards/kb/keymaps/default/keymap.c **** 
+ 154:keyboards/kb/keymaps/default/keymap.c **** }
+ 155:keyboards/kb/keymaps/default/keymap.c **** 
+ 156:keyboards/kb/keymaps/default/keymap.c **** void backlight_init_ports(void) {
+ 100               		.loc 1 156 0
+ 101               		.cfi_startproc
+ 102               	/* prologue: function */
+ 103               	/* frame size = 0 */
+ 104               	/* stack size = 0 */
+ 105               	.L__stack_usage = 0
+ 157:keyboards/kb/keymaps/default/keymap.c ****     // Optional - runs on startup
+ 158:keyboards/kb/keymaps/default/keymap.c ****     //   Usually you want to configure pins here
+ 159:keyboards/kb/keymaps/default/keymap.c **** 	DDRB |= (1<<0);
+ 106               		.loc 1 159 0
+ 107 0000 209A      		sbi 0x4,0
+ 160:keyboards/kb/keymaps/default/keymap.c **** 	DDRB |= (1<<1);
+ 108               		.loc 1 160 0
+ 109 0002 219A      		sbi 0x4,1
+ 161:keyboards/kb/keymaps/default/keymap.c **** 	DDRB |= (1<<2);
+ 110               		.loc 1 161 0
+ 111 0004 229A      		sbi 0x4,2
+ 162:keyboards/kb/keymaps/default/keymap.c **** 	DDRB |= (1<<3);
+ 112               		.loc 1 162 0
+ 113 0006 239A      		sbi 0x4,3
+ 163:keyboards/kb/keymaps/default/keymap.c **** 	
+ 164:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<0);
+ 114               		.loc 1 164 0
+ 115 0008 289A      		sbi 0x5,0
+ 165:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<1);
+ 116               		.loc 1 165 0
+ 117 000a 299A      		sbi 0x5,1
+ 166:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<2);
+ 118               		.loc 1 166 0
+ 119 000c 2A9A      		sbi 0x5,2
+ 167:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<3);
+ 120               		.loc 1 167 0
+ 121 000e 2B9A      		sbi 0x5,3
+ 168:keyboards/kb/keymaps/default/keymap.c **** 	
+ 169:keyboards/kb/keymaps/default/keymap.c **** 	
+ 170:keyboards/kb/keymaps/default/keymap.c **** 	DDRB |= (1<<4);
+ 122               		.loc 1 170 0
+ 123 0010 249A      		sbi 0x4,4
+ 171:keyboards/kb/keymaps/default/keymap.c **** 	DDRB |= (1<<5);
+ 124               		.loc 1 171 0
+ 125 0012 259A      		sbi 0x4,5
+ 172:keyboards/kb/keymaps/default/keymap.c **** 	DDRB |= (1<<6);
+ 126               		.loc 1 172 0
+ 127 0014 269A      		sbi 0x4,6
+ 173:keyboards/kb/keymaps/default/keymap.c **** 	DDRB |= (1<<7);
+ 128               		.loc 1 173 0
+ 129 0016 279A      		sbi 0x4,7
+ 174:keyboards/kb/keymaps/default/keymap.c **** 	DDRD |= (1<<0);
+ 130               		.loc 1 174 0
+ 131 0018 509A      		sbi 0xa,0
+ 175:keyboards/kb/keymaps/default/keymap.c **** 	DDRD |= (1<<1);
+ 132               		.loc 1 175 0
+ 133 001a 519A      		sbi 0xa,1
+ 176:keyboards/kb/keymaps/default/keymap.c **** 	DDRD |= (1<<2);
+ 134               		.loc 1 176 0
+ 135 001c 529A      		sbi 0xa,2
+ 177:keyboards/kb/keymaps/default/keymap.c **** 	DDRD |= (1<<3);
+ 136               		.loc 1 177 0
+ 137 001e 539A      		sbi 0xa,3
+ 178:keyboards/kb/keymaps/default/keymap.c **** 	DDRD |= (1<<4);
+ 138               		.loc 1 178 0
+ 139 0020 549A      		sbi 0xa,4
+ 179:keyboards/kb/keymaps/default/keymap.c **** 	DDRD |= (1<<5);
+ 140               		.loc 1 179 0
+ 141 0022 559A      		sbi 0xa,5
+ 180:keyboards/kb/keymaps/default/keymap.c **** 	DDRD |= (1<<6);
+ 142               		.loc 1 180 0
+ 143 0024 569A      		sbi 0xa,6
+ 181:keyboards/kb/keymaps/default/keymap.c **** 	DDRD |= (1<<7);
+ 144               		.loc 1 181 0
+ 145 0026 579A      		sbi 0xa,7
+ 182:keyboards/kb/keymaps/default/keymap.c **** 	
+ 183:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<4);
+ 146               		.loc 1 183 0
+ 147 0028 2C9A      		sbi 0x5,4
+ 184:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<5);
+ 148               		.loc 1 184 0
+ 149 002a 2D9A      		sbi 0x5,5
+ 185:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<6);
+ 150               		.loc 1 185 0
+ 151 002c 2E9A      		sbi 0x5,6
+ 186:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<7);
+ 152               		.loc 1 186 0
+ 153 002e 2F9A      		sbi 0x5,7
+ 187:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<0);
+ 154               		.loc 1 187 0
+ 155 0030 589A      		sbi 0xb,0
+ 188:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<1);
+ 156               		.loc 1 188 0
+ 157 0032 599A      		sbi 0xb,1
+ 189:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<2);
+ 158               		.loc 1 189 0
+ 159 0034 5A9A      		sbi 0xb,2
+ 190:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<3);
+ 160               		.loc 1 190 0
+ 161 0036 5B9A      		sbi 0xb,3
+ 191:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<4);
+ 162               		.loc 1 191 0
+ 163 0038 5C9A      		sbi 0xb,4
+ 192:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<5);
+ 164               		.loc 1 192 0
+ 165 003a 5D9A      		sbi 0xb,5
+ 193:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<6);
+ 166               		.loc 1 193 0
+ 167 003c 5E9A      		sbi 0xb,6
+ 194:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<7);
+ 168               		.loc 1 194 0
+ 169 003e 5F9A      		sbi 0xb,7
+ 170 0040 0895      		ret
+ 171               		.cfi_endproc
+ 172               	.LFE122:
+ 174               		.section	.text.backlight_set,"ax",@progbits
+ 175               	.global	backlight_set
+ 177               	backlight_set:
+ 178               	.LFB123:
+ 195:keyboards/kb/keymaps/default/keymap.c **** }
+ 196:keyboards/kb/keymaps/default/keymap.c **** 
+ 197:keyboards/kb/keymaps/default/keymap.c **** uint8_t lev;
+ 198:keyboards/kb/keymaps/default/keymap.c **** 
+ 199:keyboards/kb/keymaps/default/keymap.c **** void backlight_set(uint8_t level) {
+ 179               		.loc 1 199 0
+ 180               		.cfi_startproc
+ 181               	.LVL5:
+ 182               	/* prologue: function */
+ 183               	/* frame size = 0 */
+ 184               	/* stack size = 0 */
+ 185               	.L__stack_usage = 0
+ 200:keyboards/kb/keymaps/default/keymap.c ****     // Optional - runs on level change
+ 201:keyboards/kb/keymaps/default/keymap.c ****     //   Usually you want to respond to the new value
+ 202:keyboards/kb/keymaps/default/keymap.c **** 	lev = level;
+ 186               		.loc 1 202 0
+ 187 0000 8093 0000 		sts lev,r24
+ 188 0004 0895      		ret
+ 189               		.cfi_endproc
+ 190               	.LFE123:
+ 192               		.section	.text.bl_white,"ax",@progbits
+ 193               	.global	bl_white
+ 195               	bl_white:
+ 196               	.LFB125:
+ 203:keyboards/kb/keymaps/default/keymap.c **** }
+ 204:keyboards/kb/keymaps/default/keymap.c **** 
+ 205:keyboards/kb/keymaps/default/keymap.c **** void bl_off(void){
+ 206:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<0);
+ 207:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<1);
+ 208:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<2);
+ 209:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<3);
+ 210:keyboards/kb/keymaps/default/keymap.c **** 	
+ 211:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<4);
+ 212:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<5);
+ 213:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<6);
+ 214:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<7);
+ 215:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<0);
+ 216:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<1);
+ 217:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<2);
+ 218:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<3);
+ 219:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<4);
+ 220:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<5);
+ 221:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<6);
+ 222:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<7);
+ 223:keyboards/kb/keymaps/default/keymap.c **** }
+ 224:keyboards/kb/keymaps/default/keymap.c **** 
+ 225:keyboards/kb/keymaps/default/keymap.c **** void bl_white(void){
+ 197               		.loc 1 225 0
+ 198               		.cfi_startproc
+ 199               	/* prologue: function */
+ 200               	/* frame size = 0 */
+ 201               	/* stack size = 0 */
+ 202               	.L__stack_usage = 0
+ 226:keyboards/kb/keymaps/default/keymap.c **** 	static uint8_t cycle = 1;
+ 227:keyboards/kb/keymaps/default/keymap.c **** 	if(cycle == 1){
+ 203               		.loc 1 227 0
+ 204 0000 8091 0000 		lds r24,cycle.6136
+ 205 0004 8130      		cpi r24,lo8(1)
+ 206 0006 01F4      		brne .L9
+ 228:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 207               		.loc 1 228 0
+ 208 0008 8FEF      		ldi r24,lo8(-1)
+ 209 000a 85B9      		out 0x5,r24
+ 229:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 210               		.loc 1 229 0
+ 211 000c 8BB9      		out 0xb,r24
+ 230:keyboards/kb/keymaps/default/keymap.c **** 		
+ 231:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<0);
+ 212               		.loc 1 231 0
+ 213 000e 2898      		cbi 0x5,0
+ 214 0010 00C0      		rjmp .L28
+ 215               	.L9:
+ 232:keyboards/kb/keymaps/default/keymap.c **** 		
+ 233:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<7);
+ 234:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<6);
+ 235:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<4);
+ 236:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 237:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 238:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 2){
+ 216               		.loc 1 238 0
+ 217 0012 8230      		cpi r24,lo8(2)
+ 218 0014 01F4      		brne .L11
+ 239:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 219               		.loc 1 239 0
+ 220 0016 8FEF      		ldi r24,lo8(-1)
+ 221 0018 85B9      		out 0x5,r24
+ 240:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 222               		.loc 1 240 0
+ 223 001a 8BB9      		out 0xb,r24
+ 241:keyboards/kb/keymaps/default/keymap.c **** 		
+ 242:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<0);
+ 224               		.loc 1 242 0
+ 225 001c 2898      		cbi 0x5,0
+ 226 001e 00C0      		rjmp .L29
+ 227               	.L11:
+ 243:keyboards/kb/keymaps/default/keymap.c **** 		
+ 244:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<5);
+ 245:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<3);
+ 246:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<2);
+ 247:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 248:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 249:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 3){
+ 228               		.loc 1 249 0
+ 229 0020 8330      		cpi r24,lo8(3)
+ 230 0022 01F4      		brne .L12
+ 250:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 231               		.loc 1 250 0
+ 232 0024 8FEF      		ldi r24,lo8(-1)
+ 233 0026 85B9      		out 0x5,r24
+ 251:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 234               		.loc 1 251 0
+ 235 0028 8BB9      		out 0xb,r24
+ 252:keyboards/kb/keymaps/default/keymap.c **** 		
+ 253:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<0);
+ 236               		.loc 1 253 0
+ 237 002a 2898      		cbi 0x5,0
+ 238 002c 00C0      		rjmp .L27
+ 239               	.L12:
+ 254:keyboards/kb/keymaps/default/keymap.c **** 		
+ 255:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<1);
+ 256:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<0);
+ 257:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<7);
+ 258:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 259:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 260:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 4){
+ 240               		.loc 1 260 0
+ 241 002e 8430      		cpi r24,lo8(4)
+ 242 0030 01F4      		brne .L13
+ 261:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 243               		.loc 1 261 0
+ 244 0032 8FEF      		ldi r24,lo8(-1)
+ 245 0034 85B9      		out 0x5,r24
+ 262:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 246               		.loc 1 262 0
+ 247 0036 8BB9      		out 0xb,r24
+ 263:keyboards/kb/keymaps/default/keymap.c **** 		
+ 264:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<0);
+ 248               		.loc 1 264 0
+ 249 0038 2898      		cbi 0x5,0
+ 250 003a 00C0      		rjmp .L30
+ 251               	.L13:
+ 265:keyboards/kb/keymaps/default/keymap.c **** 		
+ 266:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<6);
+ 267:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<5);
+ 268:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<4);
+ 269:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 270:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 271:keyboards/kb/keymaps/default/keymap.c **** 	
+ 272:keyboards/kb/keymaps/default/keymap.c **** 	
+ 273:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 5){
+ 252               		.loc 1 273 0
+ 253 003c 8530      		cpi r24,lo8(5)
+ 254 003e 01F4      		brne .L14
+ 274:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 255               		.loc 1 274 0
+ 256 0040 8FEF      		ldi r24,lo8(-1)
+ 257 0042 85B9      		out 0x5,r24
+ 275:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 258               		.loc 1 275 0
+ 259 0044 8BB9      		out 0xb,r24
+ 276:keyboards/kb/keymaps/default/keymap.c **** 		
+ 277:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<1);
+ 260               		.loc 1 277 0
+ 261 0046 2998      		cbi 0x5,1
+ 262               	.L28:
+ 278:keyboards/kb/keymaps/default/keymap.c **** 		
+ 279:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<7);
+ 263               		.loc 1 279 0
+ 264 0048 5F98      		cbi 0xb,7
+ 280:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<6);
+ 265               		.loc 1 280 0
+ 266 004a 5E98      		cbi 0xb,6
+ 281:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<4);
+ 267               		.loc 1 281 0
+ 268 004c 5C98      		cbi 0xb,4
+ 269 004e 00C0      		rjmp .L26
+ 270               	.L14:
+ 282:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 283:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 284:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 6){
+ 271               		.loc 1 284 0
+ 272 0050 8630      		cpi r24,lo8(6)
+ 273 0052 01F4      		brne .L15
+ 285:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 274               		.loc 1 285 0
+ 275 0054 8FEF      		ldi r24,lo8(-1)
+ 276 0056 85B9      		out 0x5,r24
+ 286:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 277               		.loc 1 286 0
+ 278 0058 8BB9      		out 0xb,r24
+ 287:keyboards/kb/keymaps/default/keymap.c **** 		
+ 288:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<1);
+ 279               		.loc 1 288 0
+ 280 005a 2998      		cbi 0x5,1
+ 281 005c 00C0      		rjmp .L29
+ 282               	.L15:
+ 289:keyboards/kb/keymaps/default/keymap.c **** 		
+ 290:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<5);
+ 291:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<3);
+ 292:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<2);
+ 293:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 294:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 295:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 7){
+ 283               		.loc 1 295 0
+ 284 005e 8730      		cpi r24,lo8(7)
+ 285 0060 01F4      		brne .L16
+ 296:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 286               		.loc 1 296 0
+ 287 0062 8FEF      		ldi r24,lo8(-1)
+ 288 0064 85B9      		out 0x5,r24
+ 297:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 289               		.loc 1 297 0
+ 290 0066 8BB9      		out 0xb,r24
+ 298:keyboards/kb/keymaps/default/keymap.c **** 		
+ 299:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<1);
+ 291               		.loc 1 299 0
+ 292 0068 2998      		cbi 0x5,1
+ 293 006a 00C0      		rjmp .L27
+ 294               	.L16:
+ 300:keyboards/kb/keymaps/default/keymap.c **** 		
+ 301:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<1);
+ 302:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<0);
+ 303:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<7);
+ 304:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 305:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 306:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 8){
+ 295               		.loc 1 306 0
+ 296 006c 8830      		cpi r24,lo8(8)
+ 297 006e 01F4      		brne .L17
+ 307:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 298               		.loc 1 307 0
+ 299 0070 8FEF      		ldi r24,lo8(-1)
+ 300 0072 85B9      		out 0x5,r24
+ 308:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 301               		.loc 1 308 0
+ 302 0074 8BB9      		out 0xb,r24
+ 309:keyboards/kb/keymaps/default/keymap.c **** 		
+ 310:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<1);
+ 303               		.loc 1 310 0
+ 304 0076 2998      		cbi 0x5,1
+ 305 0078 00C0      		rjmp .L30
+ 306               	.L17:
+ 311:keyboards/kb/keymaps/default/keymap.c **** 		
+ 312:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<6);
+ 313:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<5);
+ 314:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<4);
+ 315:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 316:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 317:keyboards/kb/keymaps/default/keymap.c **** 	
+ 318:keyboards/kb/keymaps/default/keymap.c **** 	
+ 319:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 9){
+ 307               		.loc 1 319 0
+ 308 007a 8930      		cpi r24,lo8(9)
+ 309 007c 01F4      		brne .L18
+ 320:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 310               		.loc 1 320 0
+ 311 007e 8FEF      		ldi r24,lo8(-1)
+ 312 0080 85B9      		out 0x5,r24
+ 321:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 313               		.loc 1 321 0
+ 314 0082 8BB9      		out 0xb,r24
+ 322:keyboards/kb/keymaps/default/keymap.c **** 		
+ 323:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<2);
+ 315               		.loc 1 323 0
+ 316 0084 2A98      		cbi 0x5,2
+ 317 0086 00C0      		rjmp .L28
+ 318               	.L18:
+ 324:keyboards/kb/keymaps/default/keymap.c **** 		
+ 325:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<7);
+ 326:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<6);
+ 327:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<4);
+ 328:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 329:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 330:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 10){
+ 319               		.loc 1 330 0
+ 320 0088 8A30      		cpi r24,lo8(10)
+ 321 008a 01F4      		brne .L19
+ 331:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 322               		.loc 1 331 0
+ 323 008c 8FEF      		ldi r24,lo8(-1)
+ 324 008e 85B9      		out 0x5,r24
+ 332:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 325               		.loc 1 332 0
+ 326 0090 8BB9      		out 0xb,r24
+ 333:keyboards/kb/keymaps/default/keymap.c **** 		
+ 334:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<2);
+ 327               		.loc 1 334 0
+ 328 0092 2A98      		cbi 0x5,2
+ 329 0094 00C0      		rjmp .L29
+ 330               	.L19:
+ 335:keyboards/kb/keymaps/default/keymap.c **** 		
+ 336:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<5);
+ 337:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<3);
+ 338:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<2);
+ 339:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 340:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 341:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 11){
+ 331               		.loc 1 341 0
+ 332 0096 8B30      		cpi r24,lo8(11)
+ 333 0098 01F4      		brne .L20
+ 342:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 334               		.loc 1 342 0
+ 335 009a 8FEF      		ldi r24,lo8(-1)
+ 336 009c 85B9      		out 0x5,r24
+ 343:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 337               		.loc 1 343 0
+ 338 009e 8BB9      		out 0xb,r24
+ 344:keyboards/kb/keymaps/default/keymap.c **** 		
+ 345:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<2);
+ 339               		.loc 1 345 0
+ 340 00a0 2A98      		cbi 0x5,2
+ 341 00a2 00C0      		rjmp .L27
+ 342               	.L20:
+ 346:keyboards/kb/keymaps/default/keymap.c **** 		
+ 347:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<1);
+ 348:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<0);
+ 349:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<7);
+ 350:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 351:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 352:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 12){
+ 343               		.loc 1 352 0
+ 344 00a4 8C30      		cpi r24,lo8(12)
+ 345 00a6 01F4      		brne .L21
+ 353:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 346               		.loc 1 353 0
+ 347 00a8 8FEF      		ldi r24,lo8(-1)
+ 348 00aa 85B9      		out 0x5,r24
+ 354:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 349               		.loc 1 354 0
+ 350 00ac 8BB9      		out 0xb,r24
+ 355:keyboards/kb/keymaps/default/keymap.c **** 		
+ 356:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<2);
+ 351               		.loc 1 356 0
+ 352 00ae 2A98      		cbi 0x5,2
+ 353               	.L30:
+ 357:keyboards/kb/keymaps/default/keymap.c **** 		
+ 358:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<6);
+ 354               		.loc 1 358 0
+ 355 00b0 2E98      		cbi 0x5,6
+ 359:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<5);
+ 356               		.loc 1 359 0
+ 357 00b2 2D98      		cbi 0x5,5
+ 360:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<4);
+ 358               		.loc 1 360 0
+ 359 00b4 2C98      		cbi 0x5,4
+ 360 00b6 00C0      		rjmp .L26
+ 361               	.L21:
+ 361:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 362:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 363:keyboards/kb/keymaps/default/keymap.c **** 	
+ 364:keyboards/kb/keymaps/default/keymap.c **** 	
+ 365:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 13){
+ 362               		.loc 1 365 0
+ 363 00b8 8D30      		cpi r24,lo8(13)
+ 364 00ba 01F4      		brne .L22
+ 366:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 365               		.loc 1 366 0
+ 366 00bc 8FEF      		ldi r24,lo8(-1)
+ 367 00be 85B9      		out 0x5,r24
+ 367:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 368               		.loc 1 367 0
+ 369 00c0 8BB9      		out 0xb,r24
+ 368:keyboards/kb/keymaps/default/keymap.c **** 		
+ 369:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<3);
+ 370               		.loc 1 369 0
+ 371 00c2 2B98      		cbi 0x5,3
+ 372 00c4 00C0      		rjmp .L28
+ 373               	.L22:
+ 370:keyboards/kb/keymaps/default/keymap.c **** 		
+ 371:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<7);
+ 372:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<6);
+ 373:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<4);
+ 374:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 375:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 376:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 14){
+ 374               		.loc 1 376 0
+ 375 00c6 8E30      		cpi r24,lo8(14)
+ 376 00c8 01F4      		brne .L23
+ 377:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 377               		.loc 1 377 0
+ 378 00ca 8FEF      		ldi r24,lo8(-1)
+ 379 00cc 85B9      		out 0x5,r24
+ 378:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 380               		.loc 1 378 0
+ 381 00ce 8BB9      		out 0xb,r24
+ 379:keyboards/kb/keymaps/default/keymap.c **** 		
+ 380:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<3);
+ 382               		.loc 1 380 0
+ 383 00d0 2B98      		cbi 0x5,3
+ 384               	.L29:
+ 381:keyboards/kb/keymaps/default/keymap.c **** 		
+ 382:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<5);
+ 385               		.loc 1 382 0
+ 386 00d2 5D98      		cbi 0xb,5
+ 383:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<3);
+ 387               		.loc 1 383 0
+ 388 00d4 5B98      		cbi 0xb,3
+ 384:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<2);
+ 389               		.loc 1 384 0
+ 390 00d6 5A98      		cbi 0xb,2
+ 391 00d8 00C0      		rjmp .L26
+ 392               	.L23:
+ 385:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 386:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 387:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 15){
+ 393               		.loc 1 387 0
+ 394 00da 8F30      		cpi r24,lo8(15)
+ 395 00dc 01F4      		brne .L24
+ 388:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 396               		.loc 1 388 0
+ 397 00de 8FEF      		ldi r24,lo8(-1)
+ 398 00e0 85B9      		out 0x5,r24
+ 389:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 399               		.loc 1 389 0
+ 400 00e2 8BB9      		out 0xb,r24
+ 390:keyboards/kb/keymaps/default/keymap.c **** 		
+ 391:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<3);
+ 401               		.loc 1 391 0
+ 402 00e4 2B98      		cbi 0x5,3
+ 403               	.L27:
+ 392:keyboards/kb/keymaps/default/keymap.c **** 		
+ 393:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<1);
+ 404               		.loc 1 393 0
+ 405 00e6 5998      		cbi 0xb,1
+ 394:keyboards/kb/keymaps/default/keymap.c **** 		PORTD &= ~(1<<0);
+ 406               		.loc 1 394 0
+ 407 00e8 5898      		cbi 0xb,0
+ 395:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<7);
+ 408               		.loc 1 395 0
+ 409 00ea 2F98      		cbi 0x5,7
+ 410               	.L26:
+ 396:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 411               		.loc 1 396 0
+ 412 00ec 8091 0000 		lds r24,cycle.6136
+ 413 00f0 8F5F      		subi r24,lo8(-(1))
+ 414 00f2 00C0      		rjmp .L25
+ 415               	.L24:
+ 397:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 398:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 16){
+ 416               		.loc 1 398 0
+ 417 00f4 8031      		cpi r24,lo8(16)
+ 418 00f6 01F4      		brne .L8
+ 399:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 419               		.loc 1 399 0
+ 420 00f8 8FEF      		ldi r24,lo8(-1)
+ 421 00fa 85B9      		out 0x5,r24
+ 400:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 422               		.loc 1 400 0
+ 423 00fc 8BB9      		out 0xb,r24
+ 401:keyboards/kb/keymaps/default/keymap.c **** 		
+ 402:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<3);
+ 424               		.loc 1 402 0
+ 425 00fe 2B98      		cbi 0x5,3
+ 403:keyboards/kb/keymaps/default/keymap.c **** 		
+ 404:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<6);
+ 426               		.loc 1 404 0
+ 427 0100 2E98      		cbi 0x5,6
+ 405:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<5);
+ 428               		.loc 1 405 0
+ 429 0102 2D98      		cbi 0x5,5
+ 406:keyboards/kb/keymaps/default/keymap.c **** 		PORTB &= ~(1<<4);
+ 430               		.loc 1 406 0
+ 431 0104 2C98      		cbi 0x5,4
+ 407:keyboards/kb/keymaps/default/keymap.c **** 		cycle = 1;
+ 432               		.loc 1 407 0
+ 433 0106 81E0      		ldi r24,lo8(1)
+ 434               	.L25:
+ 435 0108 8093 0000 		sts cycle.6136,r24
+ 436               	.L8:
+ 437 010c 0895      		ret
+ 438               		.cfi_endproc
+ 439               	.LFE125:
+ 441               		.section	.text.bl_black,"ax",@progbits
+ 442               	.global	bl_black
+ 444               	bl_black:
+ 445               	.LFB126:
+ 408:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 409:keyboards/kb/keymaps/default/keymap.c **** }
+ 410:keyboards/kb/keymaps/default/keymap.c **** 
+ 411:keyboards/kb/keymaps/default/keymap.c **** void bl_black(void){ //atempt time match with white for dimming
+ 446               		.loc 1 411 0
+ 447               		.cfi_startproc
+ 448               	/* prologue: function */
+ 449               	/* frame size = 0 */
+ 450               	/* stack size = 0 */
+ 451               	.L__stack_usage = 0
+ 412:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<0);
+ 452               		.loc 1 412 0
+ 453 0000 289A      		sbi 0x5,0
+ 413:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<1);
+ 454               		.loc 1 413 0
+ 455 0002 299A      		sbi 0x5,1
+ 414:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<2);
+ 456               		.loc 1 414 0
+ 457 0004 2A9A      		sbi 0x5,2
+ 415:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<3);
+ 458               		.loc 1 415 0
+ 459 0006 2B9A      		sbi 0x5,3
+ 416:keyboards/kb/keymaps/default/keymap.c **** 	
+ 417:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<4);
+ 460               		.loc 1 417 0
+ 461 0008 2C9A      		sbi 0x5,4
+ 418:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<5);
+ 462               		.loc 1 418 0
+ 463 000a 2D9A      		sbi 0x5,5
+ 419:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<6);
+ 464               		.loc 1 419 0
+ 465 000c 2E9A      		sbi 0x5,6
+ 420:keyboards/kb/keymaps/default/keymap.c **** 	PORTB |= (1<<7);
+ 466               		.loc 1 420 0
+ 467 000e 2F9A      		sbi 0x5,7
+ 421:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<0);
+ 468               		.loc 1 421 0
+ 469 0010 589A      		sbi 0xb,0
+ 422:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<1);
+ 470               		.loc 1 422 0
+ 471 0012 599A      		sbi 0xb,1
+ 423:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<2);
+ 472               		.loc 1 423 0
+ 473 0014 5A9A      		sbi 0xb,2
+ 424:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<3);
+ 474               		.loc 1 424 0
+ 475 0016 5B9A      		sbi 0xb,3
+ 425:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<4);
+ 476               		.loc 1 425 0
+ 477 0018 5C9A      		sbi 0xb,4
+ 426:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<5);
+ 478               		.loc 1 426 0
+ 479 001a 5D9A      		sbi 0xb,5
+ 427:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<6);
+ 480               		.loc 1 427 0
+ 481 001c 5E9A      		sbi 0xb,6
+ 428:keyboards/kb/keymaps/default/keymap.c **** 	PORTD |= (1<<7);
+ 482               		.loc 1 428 0
+ 483 001e 5F9A      		sbi 0xb,7
+ 484 0020 0895      		ret
+ 485               		.cfi_endproc
+ 486               	.LFE126:
+ 488               		.section	.text.bl_off,"ax",@progbits
+ 489               	.global	bl_off
+ 491               	bl_off:
+ 492               	.LFB129:
+ 493               		.cfi_startproc
+ 494               	/* prologue: function */
+ 495               	/* frame size = 0 */
+ 496               	/* stack size = 0 */
+ 497               	.L__stack_usage = 0
+ 498 0000 0C94 0000 		jmp bl_black
+ 499               		.cfi_endproc
+ 500               	.LFE129:
+ 502               		.section	.text.backlight_task,"ax",@progbits
+ 503               	.global	backlight_task
+ 505               	backlight_task:
+ 506               	.LFB127:
+ 429:keyboards/kb/keymaps/default/keymap.c **** 	
+ 430:keyboards/kb/keymaps/default/keymap.c **** 	//for(int i = 0; i < 10; i++){}
+ 431:keyboards/kb/keymaps/default/keymap.c **** 	
+ 432:keyboards/kb/keymaps/default/keymap.c **** 	/*static uint8_t cycle = 1;
+ 433:keyboards/kb/keymaps/default/keymap.c **** 	if(cycle == 1){
+ 434:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 435:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 436:keyboards/kb/keymaps/default/keymap.c **** 		
+ 437:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<0);
+ 438:keyboards/kb/keymaps/default/keymap.c **** 		
+ 439:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<7);
+ 440:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<6);
+ 441:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<4);
+ 442:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 443:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 444:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 2){
+ 445:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 446:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 447:keyboards/kb/keymaps/default/keymap.c **** 		
+ 448:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<0);
+ 449:keyboards/kb/keymaps/default/keymap.c **** 		
+ 450:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<5);
+ 451:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<3);
+ 452:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<2);
+ 453:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 454:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 455:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 3){
+ 456:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 457:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 458:keyboards/kb/keymaps/default/keymap.c **** 		
+ 459:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<0);
+ 460:keyboards/kb/keymaps/default/keymap.c **** 		
+ 461:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<1);
+ 462:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<0);
+ 463:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<7);
+ 464:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 465:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 466:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 4){
+ 467:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 468:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 469:keyboards/kb/keymaps/default/keymap.c **** 		
+ 470:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<0);
+ 471:keyboards/kb/keymaps/default/keymap.c **** 		
+ 472:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<6);
+ 473:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<5);
+ 474:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<4);
+ 475:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 476:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 477:keyboards/kb/keymaps/default/keymap.c **** 	
+ 478:keyboards/kb/keymaps/default/keymap.c **** 	
+ 479:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 5){
+ 480:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 481:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 482:keyboards/kb/keymaps/default/keymap.c **** 		
+ 483:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<1);
+ 484:keyboards/kb/keymaps/default/keymap.c **** 		
+ 485:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<7);
+ 486:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<6);
+ 487:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<4);
+ 488:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 489:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 490:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 6){
+ 491:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 492:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 493:keyboards/kb/keymaps/default/keymap.c **** 		
+ 494:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<1);
+ 495:keyboards/kb/keymaps/default/keymap.c **** 		
+ 496:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<5);
+ 497:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<3);
+ 498:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<2);
+ 499:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 500:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 501:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 7){
+ 502:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 503:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 504:keyboards/kb/keymaps/default/keymap.c **** 		
+ 505:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<1);
+ 506:keyboards/kb/keymaps/default/keymap.c **** 		
+ 507:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<1);
+ 508:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<0);
+ 509:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<7);
+ 510:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 511:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 512:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 8){
+ 513:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 514:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 515:keyboards/kb/keymaps/default/keymap.c **** 		
+ 516:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<1);
+ 517:keyboards/kb/keymaps/default/keymap.c **** 		
+ 518:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<6);
+ 519:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<5);
+ 520:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<4);
+ 521:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 522:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 523:keyboards/kb/keymaps/default/keymap.c **** 	
+ 524:keyboards/kb/keymaps/default/keymap.c **** 	
+ 525:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 9){
+ 526:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 527:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 528:keyboards/kb/keymaps/default/keymap.c **** 		
+ 529:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<2);
+ 530:keyboards/kb/keymaps/default/keymap.c **** 		
+ 531:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<7);
+ 532:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<6);
+ 533:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<4);
+ 534:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 535:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 536:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 10){
+ 537:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 538:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 539:keyboards/kb/keymaps/default/keymap.c **** 		
+ 540:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<2);
+ 541:keyboards/kb/keymaps/default/keymap.c **** 		
+ 542:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<5);
+ 543:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<3);
+ 544:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<2);
+ 545:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 546:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 547:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 11){
+ 548:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 549:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 550:keyboards/kb/keymaps/default/keymap.c **** 		
+ 551:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<2);
+ 552:keyboards/kb/keymaps/default/keymap.c **** 		
+ 553:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<1);
+ 554:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<0);
+ 555:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<7);
+ 556:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 557:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 558:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 12){
+ 559:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 560:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 561:keyboards/kb/keymaps/default/keymap.c **** 		
+ 562:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<2);
+ 563:keyboards/kb/keymaps/default/keymap.c **** 		
+ 564:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<6);
+ 565:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<5);
+ 566:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<4);
+ 567:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 568:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 569:keyboards/kb/keymaps/default/keymap.c **** 	
+ 570:keyboards/kb/keymaps/default/keymap.c **** 	
+ 571:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 13){
+ 572:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 573:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 574:keyboards/kb/keymaps/default/keymap.c **** 		
+ 575:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<3);
+ 576:keyboards/kb/keymaps/default/keymap.c **** 		
+ 577:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<7);
+ 578:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<6);
+ 579:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<4);
+ 580:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 581:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 582:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 14){
+ 583:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 584:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 585:keyboards/kb/keymaps/default/keymap.c **** 		
+ 586:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<3);
+ 587:keyboards/kb/keymaps/default/keymap.c **** 		
+ 588:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<5);
+ 589:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<3);
+ 590:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<2);
+ 591:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 592:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 593:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 15){
+ 594:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 595:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 596:keyboards/kb/keymaps/default/keymap.c **** 		
+ 597:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<3);
+ 598:keyboards/kb/keymaps/default/keymap.c **** 		
+ 599:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<1);
+ 600:keyboards/kb/keymaps/default/keymap.c **** 		PORTD |= (1<<0);
+ 601:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<7);
+ 602:keyboards/kb/keymaps/default/keymap.c **** 		cycle++;
+ 603:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 604:keyboards/kb/keymaps/default/keymap.c **** 	else if(cycle == 16){
+ 605:keyboards/kb/keymaps/default/keymap.c **** 		PORTB = 0xff;
+ 606:keyboards/kb/keymaps/default/keymap.c **** 		PORTD = 0xff;
+ 607:keyboards/kb/keymaps/default/keymap.c **** 		
+ 608:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<3);
+ 609:keyboards/kb/keymaps/default/keymap.c **** 		
+ 610:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<6);
+ 611:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<5);
+ 612:keyboards/kb/keymaps/default/keymap.c **** 		PORTB |= (1<<4);
+ 613:keyboards/kb/keymaps/default/keymap.c **** 		cycle = 1;
+ 614:keyboards/kb/keymaps/default/keymap.c **** 	}*/
+ 615:keyboards/kb/keymaps/default/keymap.c **** }
+ 616:keyboards/kb/keymaps/default/keymap.c **** 
+ 617:keyboards/kb/keymaps/default/keymap.c **** void backlight_task(void) { //led effects here
+ 507               		.loc 1 617 0
+ 508               		.cfi_startproc
+ 509               		.loc 1 617 0
+ 510 0000 CF93      		push r28
+ 511               	.LCFI0:
+ 512               		.cfi_def_cfa_offset 3
+ 513               		.cfi_offset 28, -2
+ 514 0002 DF93      		push r29
+ 515               	.LCFI1:
+ 516               		.cfi_def_cfa_offset 4
+ 517               		.cfi_offset 29, -3
+ 518               	/* prologue: function */
+ 519               	/* frame size = 0 */
+ 520               	/* stack size = 2 */
+ 521               	.L__stack_usage = 2
+ 618:keyboards/kb/keymaps/default/keymap.c ****     // Optional - runs periodically
+ 619:keyboards/kb/keymaps/default/keymap.c ****     //   Note that this is called in the main keyboard loop,
+ 620:keyboards/kb/keymaps/default/keymap.c ****     //   so long running actions here can cause performance issues
+ 621:keyboards/kb/keymaps/default/keymap.c **** 	//uint8_t count = 0;
+ 622:keyboards/kb/keymaps/default/keymap.c **** 	switch(lev) {
+ 522               		.loc 1 622 0
+ 523 0004 8091 0000 		lds r24,lev
+ 524 0008 8130      		cpi r24,lo8(1)
+ 525 000a 01F0      		breq .L36
+ 526 000c 00F0      		brlo .L45
+ 527 000e 8230      		cpi r24,lo8(2)
+ 528 0010 01F0      		breq .L38
+ 529 0012 8330      		cpi r24,lo8(3)
+ 530 0014 01F4      		brne .L45
+ 531               	/* epilogue start */
+ 623:keyboards/kb/keymaps/default/keymap.c **** 		case 0:
+ 624:keyboards/kb/keymaps/default/keymap.c **** 			bl_off();
+ 625:keyboards/kb/keymaps/default/keymap.c **** 			break;
+ 626:keyboards/kb/keymaps/default/keymap.c **** 		case 1:
+ 627:keyboards/kb/keymaps/default/keymap.c **** 			for(int i = 0; i < 20; i++){
+ 628:keyboards/kb/keymaps/default/keymap.c **** 				bl_white();
+ 629:keyboards/kb/keymaps/default/keymap.c **** 			}
+ 630:keyboards/kb/keymaps/default/keymap.c **** 			bl_black();
+ 631:keyboards/kb/keymaps/default/keymap.c **** 			break;
+ 632:keyboards/kb/keymaps/default/keymap.c **** 		case 2:
+ 633:keyboards/kb/keymaps/default/keymap.c **** 			for(int i = 0; i < 40; i++){
+ 634:keyboards/kb/keymaps/default/keymap.c **** 				bl_white();
+ 635:keyboards/kb/keymaps/default/keymap.c **** 			}
+ 636:keyboards/kb/keymaps/default/keymap.c **** 			bl_black();
+ 637:keyboards/kb/keymaps/default/keymap.c **** 			break;
+ 638:keyboards/kb/keymaps/default/keymap.c **** 		case 3:
+ 639:keyboards/kb/keymaps/default/keymap.c **** 			bl_white();
+ 640:keyboards/kb/keymaps/default/keymap.c **** 			break;
+ 641:keyboards/kb/keymaps/default/keymap.c **** 		default:
+ 642:keyboards/kb/keymaps/default/keymap.c **** 			bl_off();
+ 643:keyboards/kb/keymaps/default/keymap.c **** 			break;
+ 644:keyboards/kb/keymaps/default/keymap.c **** 	}
+ 645:keyboards/kb/keymaps/default/keymap.c **** }...
+ 532               		.loc 1 645 0
+ 533 0016 DF91      		pop r29
+ 534 0018 CF91      		pop r28
+ 639:keyboards/kb/keymaps/default/keymap.c **** 			bl_white();
+ 535               		.loc 1 639 0
+ 536 001a 0C94 0000 		jmp bl_white
+ 537               	.LVL6:
+ 538               	.L36:
+ 622:keyboards/kb/keymaps/default/keymap.c **** 	switch(lev) {
+ 539               		.loc 1 622 0 discriminator 3
+ 540 001e C4E1      		ldi r28,lo8(20)
+ 541 0020 D0E0      		ldi r29,0
+ 542               	.L40:
+ 543               	.LVL7:
+ 544               	.LBB2:
+ 628:keyboards/kb/keymaps/default/keymap.c **** 				bl_white();
+ 545               		.loc 1 628 0 discriminator 3
+ 546 0022 0E94 0000 		call bl_white
+ 547               	.LVL8:
+ 548 0026 2197      		sbiw r28,1
+ 549               	.LVL9:
+ 627:keyboards/kb/keymaps/default/keymap.c **** 			for(int i = 0; i < 20; i++){
+ 550               		.loc 1 627 0 discriminator 3
+ 551 0028 01F4      		brne .L40
+ 552 002a 00C0      		rjmp .L45
+ 553               	.LVL10:
+ 554               	.L38:
+ 555               	.LBE2:
+ 622:keyboards/kb/keymaps/default/keymap.c **** 	switch(lev) {
+ 556               		.loc 1 622 0 discriminator 3
+ 557 002c C8E2      		ldi r28,lo8(40)
+ 558 002e D0E0      		ldi r29,0
+ 559               	.L41:
+ 560               	.LVL11:
+ 561               	.LBB3:
+ 634:keyboards/kb/keymaps/default/keymap.c **** 				bl_white();
+ 562               		.loc 1 634 0 discriminator 3
+ 563 0030 0E94 0000 		call bl_white
+ 564               	.LVL12:
+ 565 0034 2197      		sbiw r28,1
+ 566               	.LVL13:
+ 633:keyboards/kb/keymaps/default/keymap.c **** 			for(int i = 0; i < 40; i++){
+ 567               		.loc 1 633 0 discriminator 3
+ 568 0036 01F4      		brne .L41
+ 569               	.LVL14:
+ 570               	.L45:
+ 571               	/* epilogue start */
+ 572               	.LBE3:
+ 573               		.loc 1 645 0
+ 574 0038 DF91      		pop r29
+ 575 003a CF91      		pop r28
+ 642:keyboards/kb/keymaps/default/keymap.c **** 			bl_off();
+ 576               		.loc 1 642 0
+ 577 003c 0C94 0000 		jmp bl_black
+ 578               	.LVL15:
+ 579               		.cfi_endproc
+ 580               	.LFE127:
+ 582               		.section	.data.cycle.6136,"aw",@progbits
+ 585               	cycle.6136:
+ 586 0000 01        		.byte	1
+ 587               		.comm	lev,1,1
+ 588               	.global	keymaps
+ 589               		.section	.progmem.data.keymaps,"a",@progbits
+ 592               	keymaps:
+ 593 0000 2700      		.word	39
+ 594 0002 1E00      		.word	30
+ 595 0004 1F00      		.word	31
+ 596 0006 2000      		.word	32
+ 597 0008 2100      		.word	33
+ 598 000a 2200      		.word	34
+ 599 000c 2300      		.word	35
+ 600 000e 2400      		.word	36
+ 601 0010 2500      		.word	37
+ 602 0012 2600      		.word	38
+ 603 0014 0400      		.word	4
+ 604 0016 0500      		.word	5
+ 605 0018 0600      		.word	6
+ 606 001a 0700      		.word	7
+ 607 001c 0800      		.word	8
+ 608 001e 0151      		.word	20737
+ 609 0020 005C      		.word	23552
+ 610 0022 0100      		.word	1
+ 611 0024 0100      		.word	1
+ 612 0026 0100      		.word	1
+ 613 0028 BF5C      		.word	23743
+ 614 002a 0100      		.word	1
+ 615 002c 0100      		.word	1
+ 616 002e 0100      		.word	1
+ 617 0030 BE5C      		.word	23742
+ 618 0032 C05C      		.word	23744
+ 619 0034 0100      		.word	1
+ 620 0036 0100      		.word	1
+ 621 0038 0100      		.word	1
+ 622 003a 0100      		.word	1
+ 623 003c 0100      		.word	1
+ 624 003e 0051      		.word	20736
+ 625 0040 0100      		.word	1
+ 626 0042 0100      		.word	1
+ 627 0044 0100      		.word	1
+ 628 0046 0100      		.word	1
+ 629 0048 0100      		.word	1
+ 630 004a 0100      		.word	1
+ 631 004c 0100      		.word	1
+ 632 004e 0100      		.word	1
+ 633 0050 0100      		.word	1
+ 634 0052 0100      		.word	1
+ 635 0054 0100      		.word	1
+ 636 0056 0100      		.word	1
+ 637 0058 0100      		.word	1
+ 638 005a 0100      		.word	1
+ 639 005c 0100      		.word	1
+ 640 005e 0100      		.word	1
+ 641 0060 0100      		.word	1
+ 642 0062 0100      		.word	1
+ 643 0064 0100      		.word	1
+ 644 0066 0100      		.word	1
+ 645 0068 0100      		.word	1
+ 646 006a 0100      		.word	1
+ 647 006c 0100      		.word	1
+ 648 006e 0100      		.word	1
+ 649 0070 0100      		.word	1
+ 650 0072 0100      		.word	1
+ 651 0074 0100      		.word	1
+ 652 0076 0100      		.word	1
+ 653 0078 0100      		.word	1
+ 654 007a 0100      		.word	1
+ 655 007c 0100      		.word	1
+ 656 007e 0100      		.word	1
+ 657 0080 0100      		.word	1
+ 658 0082 0100      		.word	1
+ 659 0084 0100      		.word	1
+ 660 0086 0100      		.word	1
+ 661 0088 0100      		.word	1
+ 662 008a 0100      		.word	1
+ 663 008c 0100      		.word	1
+ 664 008e 0100      		.word	1
+ 665 0090 0100      		.word	1
+ 666 0092 0100      		.word	1
+ 667 0094 0100      		.word	1
+ 668 0096 0100      		.word	1
+ 669 0098 0100      		.word	1
+ 670 009a 0100      		.word	1
+ 671 009c 0100      		.word	1
+ 672 009e 0100      		.word	1
+ 673 00a0 0100      		.word	1
+ 674 00a2 0100      		.word	1
+ 675 00a4 0100      		.word	1
+ 676 00a6 0100      		.word	1
+ 677 00a8 0100      		.word	1
+ 678 00aa 0100      		.word	1
+ 679 00ac 0100      		.word	1
+ 680 00ae 0100      		.word	1
+ 681 00b0 0100      		.word	1
+ 682 00b2 0100      		.word	1
+ 683 00b4 0100      		.word	1
+ 684 00b6 0100      		.word	1
+ 685 00b8 0100      		.word	1
+ 686 00ba 0100      		.word	1
+ 687 00bc 0100      		.word	1
+ 688 00be 0100      		.word	1
+ 689 00c0 0100      		.word	1
+ 690 00c2 0100      		.word	1
+ 691 00c4 0100      		.word	1
+ 692 00c6 0100      		.word	1
+ 693 00c8 0100      		.word	1
+ 694 00ca 0100      		.word	1
+ 695 00cc 0100      		.word	1
+ 696 00ce 0100      		.word	1
+ 697 00d0 0100      		.word	1
+ 698 00d2 0100      		.word	1
+ 699 00d4 0100      		.word	1
+ 700 00d6 0100      		.word	1
+ 701 00d8 0100      		.word	1
+ 702 00da 0100      		.word	1
+ 703 00dc 0100      		.word	1
+ 704 00de 0100      		.word	1
+ 705 00e0 0100      		.word	1
+ 706 00e2 0100      		.word	1
+ 707 00e4 0100      		.word	1
+ 708 00e6 0100      		.word	1
+ 709 00e8 0100      		.word	1
+ 710 00ea 0100      		.word	1
+ 711 00ec 0100      		.word	1
+ 712 00ee 0100      		.word	1
+ 713 00f0 0100      		.word	1
+ 714 00f2 0100      		.word	1
+ 715 00f4 0100      		.word	1
+ 716 00f6 0100      		.word	1
+ 717 00f8 0100      		.word	1
+ 718 00fa 0100      		.word	1
+ 719 00fc 0100      		.word	1
+ 720 00fe 0100      		.word	1
+ 721 0100 0100      		.word	1
+ 722 0102 0100      		.word	1
+ 723 0104 0100      		.word	1
+ 724 0106 0100      		.word	1
+ 725 0108 0100      		.word	1
+ 726 010a 0100      		.word	1
+ 727 010c 0100      		.word	1
+ 728 010e 0100      		.word	1
+ 729 0110 0100      		.word	1
+ 730 0112 0100      		.word	1
+ 731 0114 0100      		.word	1
+ 732 0116 0100      		.word	1
+ 733 0118 0100      		.word	1
+ 734 011a 0100      		.word	1
+ 735 011c 0100      		.word	1
+ 736 011e 0100      		.word	1
+ 737 0120 0100      		.word	1
+ 738 0122 0100      		.word	1
+ 739 0124 0100      		.word	1
+ 740 0126 0100      		.word	1
+ 741 0128 0100      		.word	1
+ 742 012a 0100      		.word	1
+ 743 012c 0100      		.word	1
+ 744 012e 0100      		.word	1
+ 745 0130 0100      		.word	1
+ 746 0132 0100      		.word	1
+ 747 0134 0100      		.word	1
+ 748 0136 0100      		.word	1
+ 749 0138 0100      		.word	1
+ 750 013a 0100      		.word	1
+ 751 013c 0100      		.word	1
+ 752 013e 0100      		.word	1
+ 753 0140 0100      		.word	1
+ 754 0142 0100      		.word	1
+ 755 0144 0100      		.word	1
+ 756 0146 0100      		.word	1
+ 757 0148 0100      		.word	1
+ 758 014a 0100      		.word	1
+ 759 014c 0100      		.word	1
+ 760 014e 0100      		.word	1
+ 761 0150 0100      		.word	1
+ 762 0152 0100      		.word	1
+ 763 0154 0100      		.word	1
+ 764 0156 0100      		.word	1
+ 765 0158 0100      		.word	1
+ 766 015a 0100      		.word	1
+ 767 015c 0100      		.word	1
+ 768 015e 0100      		.word	1
+ 769 0160 0100      		.word	1
+ 770 0162 0100      		.word	1
+ 771 0164 0100      		.word	1
+ 772 0166 0100      		.word	1
+ 773 0168 0100      		.word	1
+ 774 016a 0100      		.word	1
+ 775 016c 0100      		.word	1
+ 776 016e 0100      		.word	1
+ 777 0170 0100      		.word	1
+ 778 0172 0100      		.word	1
+ 779 0174 0100      		.word	1
+ 780 0176 0100      		.word	1
+ 781 0178 0100      		.word	1
+ 782 017a 0100      		.word	1
+ 783 017c 0100      		.word	1
+ 784 017e 0100      		.word	1
+ 785 0180 0100      		.word	1
+ 786 0182 0100      		.word	1
+ 787 0184 0100      		.word	1
+ 788 0186 0100      		.word	1
+ 789 0188 0100      		.word	1
+ 790 018a 0100      		.word	1
+ 791 018c 0100      		.word	1
+ 792 018e 0100      		.word	1
+ 793 0190 0100      		.word	1
+ 794 0192 0100      		.word	1
+ 795 0194 0100      		.word	1
+ 796 0196 0100      		.word	1
+ 797 0198 0100      		.word	1
+ 798 019a 0100      		.word	1
+ 799 019c 0100      		.word	1
+ 800 019e 0100      		.word	1
+ 801 01a0 0100      		.word	1
+ 802 01a2 0100      		.word	1
+ 803 01a4 0100      		.word	1
+ 804 01a6 0100      		.word	1
+ 805 01a8 0100      		.word	1
+ 806 01aa 0100      		.word	1
+ 807 01ac 0100      		.word	1
+ 808 01ae 0100      		.word	1
+ 809 01b0 0100      		.word	1
+ 810 01b2 0100      		.word	1
+ 811 01b4 0100      		.word	1
+ 812 01b6 0100      		.word	1
+ 813 01b8 0100      		.word	1
+ 814 01ba 0100      		.word	1
+ 815 01bc 0100      		.word	1
+ 816 01be 0100      		.word	1
+ 817 01c0 0100      		.word	1
+ 818 01c2 0100      		.word	1
+ 819 01c4 0100      		.word	1
+ 820 01c6 0100      		.word	1
+ 821 01c8 0100      		.word	1
+ 822 01ca 0100      		.word	1
+ 823 01cc 0100      		.word	1
+ 824 01ce 0100      		.word	1
+ 825 01d0 0100      		.word	1
+ 826 01d2 0100      		.word	1
+ 827 01d4 0100      		.word	1
+ 828 01d6 0100      		.word	1
+ 829 01d8 0100      		.word	1
+ 830 01da 0100      		.word	1
+ 831 01dc 0100      		.word	1
+ 832 01de 0100      		.word	1
+ 833 01e0 0100      		.word	1
+ 834 01e2 0100      		.word	1
+ 835 01e4 0100      		.word	1
+ 836 01e6 0100      		.word	1
+ 837 01e8 0100      		.word	1
+ 838 01ea 0100      		.word	1
+ 839 01ec 0100      		.word	1
+ 840 01ee 0100      		.word	1
+ 841 01f0 0100      		.word	1
+ 842 01f2 0100      		.word	1
+ 843 01f4 0100      		.word	1
+ 844 01f6 0100      		.word	1
+ 845 01f8 0100      		.word	1
+ 846 01fa 0100      		.word	1
+ 847 01fc 0100      		.word	1
+ 848 01fe 0100      		.word	1
+ 849               		.text
+ 850               	.Letext0:
+ 851               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 852               		.file 3 "tmk_core/common/keyboard.h"
+ 853               		.file 4 "tmk_core/common/action_macro.h"
+ 854               		.file 5 "tmk_core/common/action.h"
+ 855               		.file 6 "tmk_core/common/report.h"
+ 856               		.file 7 "tmk_core/common/keycode.h"
+ 857               		.file 8 "quantum/quantum_keycodes.h"
+ 858               		.file 9 "lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
+ 859               		.file 10 "tmk_core/common/action_util.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keymap.c
-     /tmp/cc6waEpt.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc6waEpt.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc6waEpt.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc6waEpt.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc6waEpt.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc6waEpt.s:13     .text.action_get_macro:0000000000000000 action_get_macro
-     /tmp/cc6waEpt.s:34     .text.matrix_init_user:0000000000000000 matrix_init_user
-     /tmp/cc6waEpt.s:48     .text.matrix_scan_user:0000000000000000 matrix_scan_user
-     /tmp/cc6waEpt.s:63     .text.process_record_user:0000000000000000 process_record_user
-     /tmp/cc6waEpt.s:82     .text.led_set_user:0000000000000000 led_set_user
-     /tmp/cc6waEpt.s:99     .progmem.data.keymaps:0000000000000000 keymaps
+     /tmp/cc7CCtBP.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc7CCtBP.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc7CCtBP.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc7CCtBP.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc7CCtBP.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc7CCtBP.s:13     .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/cc7CCtBP.s:34     .text.matrix_init_user:0000000000000000 matrix_init_user
+     /tmp/cc7CCtBP.s:48     .text.matrix_scan_user:0000000000000000 matrix_scan_user
+     /tmp/cc7CCtBP.s:63     .text.process_record_user:0000000000000000 process_record_user
+     /tmp/cc7CCtBP.s:82     .text.led_set_user:0000000000000000 led_set_user
+     /tmp/cc7CCtBP.s:98     .text.backlight_init_ports:0000000000000000 backlight_init_ports
+     /tmp/cc7CCtBP.s:177    .text.backlight_set:0000000000000000 backlight_set
+                            *COM*:0000000000000001 lev
+     /tmp/cc7CCtBP.s:195    .text.bl_white:0000000000000000 bl_white
+     /tmp/cc7CCtBP.s:585    .data.cycle.6136:0000000000000000 cycle.6136
+     /tmp/cc7CCtBP.s:444    .text.bl_black:0000000000000000 bl_black
+     /tmp/cc7CCtBP.s:491    .text.bl_off:0000000000000000 bl_off
+     /tmp/cc7CCtBP.s:505    .text.backlight_task:0000000000000000 backlight_task
+     /tmp/cc7CCtBP.s:592    .progmem.data.keymaps:0000000000000000 keymaps
 
-NO UNDEFINED SYMBOLS
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

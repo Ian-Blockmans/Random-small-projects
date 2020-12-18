@@ -11,6 +11,9 @@
 #define PRODUCT         keyboard
 #define DESCRIPTION     Keyboard
 
+/* bootloader */
+//#define CATERINA_BOOTLOADER 
+
 /* key matrix size */
 #define MATRIX_ROWS 4
 #define MATRIX_COLS 4
@@ -24,7 +27,7 @@
 #define DIODE_DIRECTION COL2ROW
 
 /* number of backlight levels */
-#define BACKLIGHT_PIN B5
+#define BACKLIGHT_PIN B6
 #ifdef BACKLIGHT_PIN
 #define BACKLIGHT_LEVELS 3
 #endif
